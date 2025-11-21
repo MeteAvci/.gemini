@@ -1,4 +1,4 @@
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/methetech/WheelScrollFixer?style=for-the-badge)](https://github.com/MeteAvci/.gemini/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/MeteAvci/.gemini?style=for-the-badge)](https://github.com/MeteAvci/.gemini/releases)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE.md)
 [![Platform](https://img.shields.io/badge/Platform-Windows-0078D6.svg?style=for-the-badge)](https://www.microsoft.com/windows)
 
