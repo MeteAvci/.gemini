@@ -1,3 +1,5 @@
+![Release](https://img.shields.io/badge/Release-v1-blue)
+
 # .gemini Configuration for Gemini CLI & Antigravity
 <details>
 <summary>Türkçesi için tıkla!</summary>
