@@ -17,9 +17,9 @@ The installation process involves placing the `GEMINI.md` file into the correct 
 
 *   **Linux:**
     1.  Open your Terminal.
-    2.  Navigate to your home directory by typing `cd ~`.
-    3.  Create a directory named `.gemini` by typing `mkdir -p .gemini`.
-    4.  Copy the `GEMINI.md` file into this folder. The final path should be `~/.gemini/GEMINI.md`.
+    2.  `cd ~` yazarak ev dizininize gidin.
+    3.  `mkdir -p .gemini` yazarak `.gemini` adında bir dizin oluşturun.
+    4.  `GEMINI.md` dosyasını bu klasörün içine kopyalayın. Son yol `~/.gemini/GEMINI.md` olmalıdır.
 
 After placing the file, restart your AI tool for the new configuration to take effect.
 
@@ -91,7 +91,7 @@ Kurulum işlemi, `GEMINI.md` dosyasını işletim sisteminize uygun, doğru Gemi
 *   **Windows:**
     1.  `Win + R` tuşlarına basın, `%USERPROFILE%` yazın ve Enter'a basın.
     2.  Eğer mevcut değilse, `.gemini` adında bir klasör oluşturun.
-    3.  `GEMINI.gemini` dosyasını bu `.gemini` klasörünün içine kopyalayın. Son yol `%USERPROFILE%\.gemini\GEMINI.md` olmalıdır.
+    3.  `GEMINI.md` dosyasını bu `.gemini` klasörünün içine kopyalayın. Son yol `%USERPROFILE%\.gemini\GEMINI.md` olmalıdır.
 
 *   **macOS:**
     *   **Profesyonel İpucu (Araç zaten kuruluysa):** Terminal'i açın ve `open ~/.gemini/` komutunu çalıştırın. Bu, doğru klasörü doğrudan Finder'da açacaktır. Sonra, `GEMINI.md`'yi içine sürükleyip bırakmanız yeterlidir.
