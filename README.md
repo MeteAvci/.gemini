@@ -1,12 +1,12 @@
-# .gemini Configuration Project for Gemini CLI & Google Antigravity
+# .gemini Configuration for Gemini CLI & Antigravity
 <details>
 <summary>Türkçesi için tıkla!</summary>
 
 ---
 
-# .gemini Konfigürasyon Projesi (Google Antigravity için)
+# Gemini CLI ve Antigravity için .gemini Yapılandırma Ayarları
 
-Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity çerçevesi ve onun Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
+Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
 ## Kurulum
 
@@ -15,7 +15,7 @@ Kurulum işlemi, `GEMINI.md` dosyasını işletim sisteminize uygun, doğru Gemi
 *   **Windows:**
     1.  `Win + R` tuşlarına basın, `%USERPROFILE%` yazın ve Enter'a basın.
     2.  Eğer mevcut değilse, `.gemini` adında bir klasör oluşturun.
-    3.  `GEMINI.gemini` dosyasını bu `.gemini` klasörünün içine kopyalayın. Son yol `%USERPROFILE%\.gemini\GEMINI.md` olmalıdır.
+    3.  `GEMINI.md` dosyasını bu `.gemini` klasörünün içine kopyalayın. Son yol `%USERPROFILE%\.gemini\GEMINI.md` olmalıdır.
 
 *   **macOS:**
     *   **Profesyonel İpucu (Araç zaten kuruluysa):** Terminal'i açın ve `open ~/.gemini/` komutunu çalıştırın. Bu, doğru klasörü doğrudan Finder'da açacaktır. Sonra, `GEMINI.md`'yi içine sürükleyip bırakmanız yeterlidir.
@@ -33,7 +33,7 @@ Dosyayı yerleştirdikten sonra, yeni yapılandırmanın etkili olması için AI
 
 ## AI Asistanınızı Nasıl Yapılandırırsınız?
 
-Bu, `GEMINI.md` dosyasını değiştirmek için pratik bir rehberdir. Bu dosyayı statik bir belge olarak değil, AI'nızın beyni için bir kontrol paneli olarak düşünün.
+Bu doküman `GEMINI.md` dosyasını düzenlemek için pratik bir rehberdir. Bu dosyayı statik bir belge olarak değil, yapay zekanızın beyni için bir kontrol paneli olarak düşünün. Her bölüm, yapay zekanın davranışını, kişiliğini ve çalışma mantığını ince ayarlarla değiştirmenize olanak tanır.
 
 ### 1. Persona'yı Özelleştirme
 
@@ -51,7 +51,7 @@ Burası, AI'nın sizinle nasıl etkileşime girdiğini temelden değiştirebilec
 -   **Nedir:** `<persona_instructions>` içindeki `Identity` satırı.
 -   **Neden:** AI'nın adını veya tüm benlik konseptini değiştirmek için.
 -   **Nasıl:** Metni doğrudan düzenleyin.
-    **Örnek:** `You are **AI Final Boss aka ÇeteGPT**...` satırını `You are **Jarvis**, bir kibar ve esprili İngiliz asistan...` olarak değiştirmek, yanıtlarını yeni personaya uyacak şekilde dramatik olarak değiştirecektir.
+    **Örnek:** `You are **AI Final Boss aka ÇeteGPT**...` satırını `You are **Jarvis**, bir kibar ve esprili İngiliz asistan...` olarak değiştirmek, yanıtlarını yeni personaya uyacak şekilde köklü biçimde değiştirecektir.
 
 ---
 
@@ -123,7 +123,7 @@ This is where you can fundamentally change how the AI interacts with you.
 -   **What:** The `Identity` line inside `<persona_instructions>`.
 -   **Why:** To change the AI's name or its entire self-concept.
 -   **How:** Edit the text directly.
-    **Example:** Change `You are **AI Final Boss aka ÇeteGPT**...` to `You are **Jarvis**, bir kibar ve esprili İngiliz asistan...` olarak değiştirmek, yanıtlarını yeni personaya uyacak şekilde dramatik olarak değiştirecektir.
+    **Example:** Changing `You are **AI Final Boss aka ÇeteGPT**...` to `You are **Jarvis**, a polite and witty British assistant...` will dramatically change its responses to fit the new persona.
 
 ---
 
