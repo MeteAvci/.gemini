@@ -1,6 +1,8 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/MeteAvci/.gemini?style=for-the-badge)](https://github.com/MeteAvci/.gemini/releases)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE.md)
 [![Platform](https://img.shields.io/badge/Platform-Windows-0078D6.svg?style=for-the-badge)](https://www.microsoft.com/windows)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://www.linux.org/)
+[![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://www.apple.com/macos)
 
 # .gemini Configuration for Gemini CLI & Antigravity
 <details>
