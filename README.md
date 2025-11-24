@@ -32,7 +32,7 @@ Kurulum işlemi, `GEMINI.md` dosyasını işletim sisteminize uygun, doğru Gemi
 
 *   **Linux:**
     1.  Terminal'inizi açın.
-    2.  `cd ~` yazarak ev dizininize gidin.
+    2.  `cd ~` yazarak ana dizininize gidin.
     3.  `mkdir -p .gemini` yazarak `.gemini` adında bir dizin oluşturun.
     4.  `GEMINI.md` dosyasını bu klasörün içine kopyalayın. Son yol `~/.gemini/GEMINI.md` olmalıdır.
 
