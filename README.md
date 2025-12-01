@@ -1,4 +1,4 @@
-![Release](https://img.shields.io/badge/Release-v1-blue)
+![Release](https://img.shields.io/badge/Release-v1.1-blue)
 
 # .gemini Configuration for Gemini CLI & Antigravity
 <details>
@@ -9,6 +9,12 @@
 # Gemini CLI ve Antigravity için .gemini Yapılandırma Ayarları
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
+
+### 🚀 Son Güncelleme (v1.1) - "The Predator Update"
+- **Güvenlik:** "Araç Güvenilirliği" ve "Karşı İstihbarat (Avcı)" protokolleri eklendi.
+- **Dosya Düzenleme:** Antigravity bug'larına karşı "Güvenli Tam Yazım" stratejisi geliştirildi.
+- **Yapılandırma:** `log_dir` çalışma alanından bağımsız yapmayı sağladık, `vision_model` desteği eklendi.
+- **Mod:** Sohbet ve Kod için ayrı "Çift Sıcaklık" ayarı getirildi (`chat_temperature`: 1.0, `temperature`: 0.1).
 
 ## Kurulum
 
@@ -81,6 +87,12 @@ Bu ayarlar, AI'nın performansını ve teknik davranışını kontrol eder.
 </details>
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
+
+### 🚀 Latest Update (v1.1) - "The Predator Update"
+- **Security:** Added "Tool Reliability" and "Counter-Intelligence (Predator)" protocols.
+- **File Editing:** Implemented "Safety Fallback" strategy against Antigravity bugs.
+- **Configuration:** Made `log_dir` workspace-agnostic, added `vision_model` support.
+- **Mode:** Introduced "Dual-Temperature" setting for Chat vs Code (`chat_temperature`: 1.0, `temperature`: 0.1).
 
 ## Installation
 
