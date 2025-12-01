@@ -16,7 +16,7 @@
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
-### 🚀 Son Güncelleme (v1.1) - "The Predator Update"
+### 🚀 Son Güncelleme (v1.1) - "Avcı Güncellemesi"
 - **Güvenlik:** "Araç Güvenilirliği" ve "Karşı İstihbarat (Avcı)" protokolleri eklendi.
 - **Dosya Düzenleme:** Antigravity bug'larına karşı "Güvenli Tam Yazım" stratejisi geliştirildi.
 - **Yapılandırma:** `log_dir` çalışma alanından bağımsız yapmayı sağladık, `vision_model` desteği eklendi.
