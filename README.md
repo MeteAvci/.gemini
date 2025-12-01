@@ -1,4 +1,10 @@
-![Release](https://img.shields.io/badge/Release-v1.1-blue)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/MeteAvci/.gemini?style=for-the-badge&color=0078D6)](https://github.com/MeteAvci/.gemini/releases)
+[![MIT License](https://img.shields.io/badge/License-MIT-0078D6.svg?style=for-the-badge)](LICENSE.md)
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://www.microsoft.com/windows)
+[![Linux](https://img.shields.io/badge/Linux-0078D6?style=for-the-badge&logo=linux&logoColor=white)](https://www.linux.org/)
+[![macOS](https://img.shields.io/badge/macOS-0078D6?style=for-the-badge&logo=apple&logoColor=white)](https://www.apple.com/macos)
+[![Google](https://img.shields.io/badge/Google-0078D6?style=for-the-badge&logo=google&logoColor=white)](https://about.google/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-0078D6?style=for-the-badge&logo=googlegemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
 
 # .gemini Configuration for Gemini CLI & Antigravity
 <details>
@@ -31,7 +37,7 @@ Kurulum işlemi, `GEMINI.md` dosyasını işletim sisteminize uygun, doğru Gemi
 
 *   **Linux:**
     1.  Terminal'inizi açın.
-    2.  `cd ~` yazarak ev dizininize gidin.
+    2.  `cd ~` yazarak ana dizininize gidin.
     3.  `mkdir -p .gemini` yazarak `.gemini` adında bir dizin oluşturun.
     4.  `GEMINI.md` dosyasını bu klasörün içine kopyalayın. Son yol `~/.gemini/GEMINI.md` olmalıdır.
 
