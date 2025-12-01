@@ -16,11 +16,12 @@
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
-### 🚀 Son Güncelleme (v1.1) - "Avcı Güncellemesi"
-- **Güvenlik:** "Araç Güvenilirliği" ve "Karşı İstihbarat (Avcı)" protokolleri eklendi.
-- **Dosya Düzenleme:** Antigravity bug'larına karşı "Güvenli Tam Yazım" stratejisi geliştirildi.
-- **Yapılandırma:** `log_dir` çalışma alanından bağımsız yapmayı sağladık, `vision_model` desteği eklendi.
-- **Mod:** Sohbet ve Kod için ayrı "Çift Sıcaklık" ayarı getirildi (`chat_temperature`: 1.0, `temperature`: 0.1).
+### 🚀 Son Güncelleme (v1.1) - "Avcı Güncellemesi (Hotfix)"
+- **Güvenlik (Avcı Protokolü):** "Karşı İstihbarat" ve "Araç Güvenilirliği" protokolleri eklendi.
+- **Kritik Düzeltme (Hotfix):** `replace_file_content` yasaklandı. "Güvenli Yazma Protokolü" (Önce Oku -> Hepsini Yaz) devreye alındı.
+- **Mod:** Sohbet ve Kod için ayrı "Çift Sıcaklık" ayarı (`chat_temperature`: 1.0, `temperature`: 0.1).
+- **Yapılandırma:** `log_dir` bağımsızlaştırıldı, `vision_model` desteği eklendi.
+- **Manifesto:** "Reliability > Speed" (Güvenilirlik > Hız) ilkesi eklendi.
 
 ## Kurulum
 
@@ -94,11 +95,12 @@ Bu ayarlar, AI'nın performansını ve teknik davranışını kontrol eder.
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
 
-### 🚀 Latest Update (v1.1) - "The Predator Update"
-- **Security:** Added "Tool Reliability" and "Counter-Intelligence (Predator)" protocols.
-- **File Editing:** Implemented "Safety Fallback" strategy against Antigravity bugs.
+### 🚀 Latest Update (v1.1) - "The Predator Update (Hotfix)"
+- **Security (Predator Protocol):** Added "Counter-Intelligence" and "Tool Reliability" protocols.
+- **Critical Fix (Hotfix):** Banned `replace_file_content`. Implemented "Safe Write Protocol" (Read First -> Write All).
+- **Mode:** Introduced "Dual-Temperature" setting (`chat_temperature`: 1.0, `temperature`: 0.1).
 - **Configuration:** Made `log_dir` workspace-agnostic, added `vision_model` support.
-- **Mode:** Introduced "Dual-Temperature" setting for Chat vs Code (`chat_temperature`: 1.0, `temperature`: 0.1).
+- **Manifest:** Added "Reliability > Speed" principle.
 
 ## Installation
 
