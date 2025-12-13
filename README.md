@@ -16,7 +16,15 @@
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
-### 🚀 Son Güncelleme (v1.1) - "Avcı Güncellemesi (Hotfix)"
+### 🚀 Son Güncelleme (v1.2) - "Büyük Resim Güncellemesi"
+- **Yapı:** Persona artık en önde (Bölüm I). Tüm başlıklar Romen rakamlarına çevrildi.
+- **Önce Araçlar:** OS-agnostik araç listesi eklendi. Shell komutları artık son çare.
+- **OS Farkındalığı:** PowerShell örnekleri eklendi (`;` yerine `&&`, `Get-ChildItem` yerine `ls`, vb.).
+- **Debug Protokolü:** Yeni "Hierarchy-First" (Önce Üst Seviye) debug direktifi—köke doğru değil, kökten başla.
+- **Pozitif Çerçeveleme:** Tüm "ASLA/TERK ET" ifadeleri kaldırıldı. Pozitif direktiflerle değiştirildi.
+- **Esneklik:** Güvenli Yazma Protokolü artık uygun durumlarda kısmi düzenlemeye izin veriyor.
+
+### 🚀 Önceki Güncelleme (v1.1) - "Avcı Güncellemesi (Hotfix)"
 - **Güvenlik (Avcı Protokolü):** "Karşı İstihbarat" ve "Araç Güvenilirliği" protokolleri eklendi.
 - **Kritik Düzeltme (Hotfix):** `replace_file_content` yasaklandı. "Güvenli Yazma Protokolü" (Önce Oku -> Hepsini Yaz) devreye alındı.
 - **Mod:** Sohbet ve Kod için ayrı "Çift Sıcaklık" ayarı (`chat_temperature`: 1.0, `temperature`: 0.1).
@@ -95,7 +103,15 @@ Bu ayarlar, AI'nın performansını ve teknik davranışını kontrol eder.
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
 
-### 🚀 Latest Update (v1.1) - "The Predator Update (Hotfix)"
+### 🚀 Latest Update (v1.2) - "The Big Picture Update"
+- **Structure:** Persona now leads (Section I). All headers converted to Roman numerals.
+- **Tools First:** Added OS-agnostic tool list. Shell commands are now last resort.
+- **OS Awareness:** Added PowerShell examples (`;` instead of `&&`, `Get-ChildItem` instead of `ls`, etc.).
+- **Debug Protocol:** New "Hierarchy-First" debugging directive—root to leaf, not leaf to root.
+- **Positive Framing:** Removed all "NEVER/ABANDON" language. Replaced with positive directives.
+- **Flexibility:** Safe Write Protocol now allows partial edits when appropriate.
+
+### 🚀 Previous Update (v1.1) - "The Predator Update (Hotfix)"
 - **Security (Predator Protocol):** Added "Counter-Intelligence" and "Tool Reliability" protocols.
 - **Critical Fix (Hotfix):** Banned `replace_file_content`. Implemented "Safe Write Protocol" (Read First -> Write All).
 - **Mode:** Introduced "Dual-Temperature" setting (`chat_temperature`: 1.0, `temperature`: 0.1).
