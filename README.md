@@ -16,13 +16,15 @@
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
-### 🚀 Son Güncelleme (v1.2) - "Büyük Resim Güncellemesi"
-- **Yapı:** Persona artık en önde (Bölüm I). Tüm başlıklar Romen rakamlarına çevrildi.
-- **Önce Araçlar:** OS-agnostik araç listesi eklendi. Shell komutları artık son çare.
-- **OS Farkındalığı:** PowerShell örnekleri eklendi (`;` yerine `&&`, `Get-ChildItem` yerine `ls`, vb.).
-- **Debug Protokolü:** Yeni "Hierarchy-First" (Önce Üst Seviye) debug direktifi—köke doğru değil, kökten başla.
-- **Pozitif Çerçeveleme:** Tüm "ASLA/TERK ET" ifadeleri kaldırıldı. Pozitif direktiflerle değiştirildi.
-- **Esneklik:** Güvenli Yazma Protokolü artık uygun durumlarda kısmi düzenlemeye izin veriyor.
+### 🚀 Son Güncelleme (v1.2) - "Sistem Mimari Yeniden Tasarımı"
+- **Pozitif Dil:** "ASLA/YAPMA" ifadeleri kaldırıldı, "bunun yerine şunu yap" formatına dönüştürüldü.
+- **Modüler Mimari (Yeni Bölüm VI):** Domain-driven folder yapısı, küçük dosyalar, deep hierarchies zorunlu hale getirildi.
+- **Explicit Cross-References:** Her protokol artık birbirine section numaralarıyla referans veriyor.
+- **Tools First:** 3-adımlı decision tree ile built-in araçlar zorunlu hale getirildi.
+- **Güvenlik:** Counter-Intelligence artık proactive, tüm protokoller koordineli çalışıyor.
+- **Manifest:** "Structure > Chaos" ve "Vigilance > Naivety" ilkeleri eklendi.
+
+[Detaylı v1.2 Release Notes için tıklayın](https://github.com/MeteAvci/.gemini/releases/tag/v1.2)
 
 ### 🚀 Önceki Güncelleme (v1.1) - "Avcı Güncellemesi (Hotfix)"
 - **Güvenlik (Avcı Protokolü):** "Karşı İstihbarat" ve "Araç Güvenilirliği" protokolleri eklendi.
@@ -103,13 +105,15 @@ Bu ayarlar, AI'nın performansını ve teknik davranışını kontrol eder.
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
 
-### 🚀 Latest Update (v1.2) - "The Big Picture Update"
-- **Structure:** Persona now leads (Section I). All headers converted to Roman numerals.
-- **Tools First:** Added OS-agnostic tool list. Shell commands are now last resort.
-- **OS Awareness:** Added PowerShell examples (`;` instead of `&&`, `Get-ChildItem` instead of `ls`, etc.).
-- **Debug Protocol:** New "Hierarchy-First" debugging directive—root to leaf, not leaf to root.
-- **Positive Framing:** Removed all "NEVER/ABANDON" language. Replaced with positive directives.
-- **Flexibility:** Safe Write Protocol now allows partial edits when appropriate.
+### 🚀 Latest Update (v1.2) - "System Architecture Redesign"
+- **Positive Language:** Removed all "NEVER/DON'T" language, replaced with "use this instead of that" format.
+- **Modular Architecture (New Section VI):** Domain-driven folders, small files, deep hierarchies now mandatory.
+- **Explicit Cross-References:** Every protocol now references others by section numbers.
+- **Tools First:** 3-step decision tree makes built-in tools mandatory.
+- **Security:** Counter-Intelligence now proactive, all protocols work coordinately.
+- **Manifest:** Added "Structure > Chaos" and "Vigilance > Naivety" principles.
+
+[Click for detailed v1.2 Release Notes](https://github.com/MeteAvci/.gemini/releases/tag/v1.2)
 
 ### 🚀 Previous Update (v1.1) - "The Predator Update (Hotfix)"
 - **Security (Predator Protocol):** Added "Counter-Intelligence" and "Tool Reliability" protocols.
