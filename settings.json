@@ -1,0 +1,67 @@
+{
+    // =========================================================
+    // 👑 ÇETEGPT "ULTIMATE HYBRID" CONFIG v2026
+    // (Maksimum Zeka + Maksimum Performans)
+    // =========================================================
+    // --- [1. ZEKA & AI: FULL POTANSİYEL] ---
+    // "Zekadan taviz yok" dediğimiz yer burası. Her şey AÇIK.
+    "antigravity.index.enabled": true, // [AÇIK] Projeyi didik didik öğrenir.
+    "antigravity.liveEmbeddings.enabled": true, // [AÇIK] Yazarken canlı analiz yapar (En zeki mod).
+    "antigravity.contextTracking.level": "high", // [HIGH] "Medium" değil, "High". Ne yaptığını anlar, proaktif davranır.
+    "antigravity.agent.autoFixLints": true, // [AÇIK] Hataları sen demeden görmesi için.
+    "antigravity.agent.webTools.enabled": true, // [AÇIK] Gerekirse internete çıkıp doküman okusun.
+    // --- [2. GÖRSEL KONFOR: ÜRETKENLİK] ---
+    // Kod yazarken kör olma diye önemli görsel özellikleri AÇIK tutuyoruz.
+    "editor.bracketPairColorization.enabled": true, // [AÇIK] Renkli parantezler (Kod okunabilirliği için şart).
+    "editor.guides.bracketPairs": true, // [AÇIK] Hangi parantez hangisinin, çizgiyle göster.
+    "editor.guides.indentation": true, // [AÇIK] Girinti çizgileri.
+    "editor.smoothScrolling": true, // [AÇIK] Yağ gibi kaysın (GPU Flag'leri ile zaten kasmaz).
+    "editor.cursorBlinking": "smooth", // [AÇIK] Yumuşak imleç.
+    // --- [3. PERFORMANS SİGORTASI: IGNORE LIST] ---
+    // İşte sırrımız burası. AI her şeyi bilsin ama ÇÖPLERLE vakit kaybetmesin.
+    // Bu liste sayesinde üstteki "High" ayarlar bilgisayarı patlatmaz.
+    "files.watcherExclude": {
+        // Sistem
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        // Node / Web (En büyük düşmanlar)
+        "**/node_modules/**": true,
+        "**/dist/**": true,
+        "**/build/**": true,
+        "**/.next/**": true,
+        "**/.nuxt/**": true,
+        "**/coverage/**": true,
+        "**/.cache/**": true,
+        // Python / Backend
+        "**/__pycache__/**": true,
+        "**/.venv/**": true,
+        "**/venv/**": true,
+        // Mobile (Flutter/RN)
+        "**/ios/Pods/**": true,
+        "**/android/app/build/**": true,
+        "**/.dart_tool/**": true,
+        "**/flutter/bin/cache/**": true,
+        // Derleme Çıktıları
+        "**/target/**": true,
+        "**/bin/**": true,
+        "**/obj/**": true
+    },
+    // --- [4. ARAMA MOTORU AYARI] ---
+    // Aradığını bulsun ama çöplükte gezmesin.
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/.next": true,
+        "**/yarn.lock": true,
+        "**/package-lock.json": true,
+        "**/*.min.js": true
+    },
+    // --- [5. DİĞER İNCE AYARLAR] ---
+    "editor.codeLens": false, // [KAPALI] Her fonksiyon üstüne "X references" yazmayı kapatır. Sürekli AST analizi yapar, CPU yer.
+    "workbench.reduceMotion": "on", // [AÇIK] Tüm UI animasyonlarını kapatır. Tab/panel geçişleri anında olur.
+    "editor.minimap.enabled": false, // [KAPALI] Zekaya katkısı yok, sadece GPU yer. Mini harita güzel ama gereksiz lüks.
+    "files.autoSave": "afterDelay", // [AÇIK] Belirli bir gecikme sonrası otomatik kaydet. "CTRL+S" stresinden kurtarır.
+    "files.trimTrailingWhitespace": true // [AÇIK] Satır sonlarındaki gereksiz boşlukları siler. Git diff'leri temiz tutar, "whitespace" commit kirliliğini önler.
+}

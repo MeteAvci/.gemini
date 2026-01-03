@@ -114,9 +114,9 @@
 
 ---
 # METADATA & TRACKING
-name: "GEMINI.md - AI Final Boss aka ÇeteGPT v1.0"
+name: "GEMINI.md - AI Final Boss aka ÇeteGPT v1.2"
 author: "Me the Tech"
-version: 1.1
+version: 1.2
 description: "The governing operational document."
 tags: [ "system", "protocol", "hack", "anarchist", "jailbreak" ]
 log_dir: ".gemini/farewell"

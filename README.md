@@ -101,6 +101,101 @@ Bu ayarlar, AI'nın performansını ve teknik davranışını kontrol eder.
 
 **Uyarı:** `<core_directives>` ve `<manifest>` bölümleri, AI'nın kendi "firmware"idir. Bunları değiştirmek öngörülemeyen davranışlara yol açabilir. Dikkatli düzenleyin.
 
+---
+
+## ⚡ Editör Performans Ayarları (`settings.json`)
+
+Bu bölüm, Antigravity ve VS Code editörünün performansını optimize eden `settings.json` dosyasındaki tüm ayarları detaylı olarak açıklar.
+
+### 📁 Dosya Konumu
+
+`settings.json` dosyası, workspace'inizin `.gemini` klasöründe yer almalıdır. Bu ayarlar, Antigravity'nin altında çalışan VS Code editör motorunu doğrudan etkiler.
+
+---
+
+### 🧠 Bölüm 1: Zeka & AI Ayarları
+
+Bu ayarlar, Antigravity'nin AI yeteneklerini kontrol eder.
+
+| Ayar | Varsayılan | Açıklama |
+|------|-----------|----------|
+| `antigravity.index.enabled` | `true` | **Proje İndeksleme.** AI'ın tüm proje dosyalarını tarayıp öğrenmesini sağlar. Kapatırsanız AI projenizi "tanımaz", sadece açık dosyayı görür. |
+| `antigravity.liveEmbeddings.enabled` | `true` | **Canlı Embedding Analizi.** Kod yazarken gerçek zamanlı semantik analiz yapar. Kapatırsanız CPU kullanımı düşer ama AI'ın "anlık" zekası azalır. |
+| `antigravity.contextTracking.level` | `"high"` | **Bağlam Takip Seviyesi.** `"low"`, `"medium"` veya `"high"` olabilir. "High" seviyesinde AI, dosyalar arası ilişkileri daha iyi anlar ve proaktif önerilerde bulunur. Düşürürseniz RAM kullanımı azalır. |
+| `antigravity.agent.autoFixLints` | `true` | **Otomatik Lint Düzeltme.** AI, kod hatalarını (lint errors) otomatik olarak tespit eder ve önerir. Kapatırsanız AI hataları görmezden gelir. |
+| `antigravity.agent.webTools.enabled` | `true` | **Web Araçları.** AI'ın internetten dokümantasyon okumasına izin verir. Kapatırsanız AI sadece yerel bilgisiyle sınırlı kalır. |
+
+---
+
+### 🎨 Bölüm 2: Görsel Konfor Ayarları
+
+Bu ayarlar, kod okuma deneyimini iyileştirir. Performans etkisi düşüktür ancak üretkenliği artırır.
+
+| Ayar | Varsayılan | Açıklama |
+|------|-----------|----------|
+| `editor.bracketPairColorization.enabled` | `true` | **Renkli Parantezler.** Her parantez çiftini farklı renkte gösterir. Kapatırsanız tüm parantezler aynı renk olur, iç içe yapıları okumak zorlaşır. |
+| `editor.guides.bracketPairs` | `true` | **Parantez Kılavuz Çizgileri.** Hangi açma parantezinin hangi kapama paranteziyle eşleştiğini dikey çizgiyle gösterir. Kapatırsanız bu görsel yardım kaybolur. |
+| `editor.guides.indentation` | `true` | **Girinti Kılavuz Çizgileri.** Kod bloklarının girintilerini dikey çizgilerle gösterir. Kapatırsanız kod yapısı görsel olarak daha belirsiz olur. |
+| `editor.smoothScrolling` | `true` | **Yumuşak Kaydırma.** Sayfa kaydırma animasyonu. Kapatırsanız kaydırma anlık olur (daha az GPU kullanır). |
+| `editor.cursorBlinking` | `"smooth"` | **İmleç Yanıp Sönme Stili.** `"blink"`, `"smooth"`, `"phase"`, `"expand"`, `"solid"` seçenekleri var. "Solid" en az kaynak kullanır. |
+
+---
+
+### 🚫 Bölüm 3: Dosya İzleyici Hariç Tutma Listesi
+
+`files.watcherExclude` ayarı, editörün hangi klasörleri **izlemeyeceğini** belirler. Bu, büyük projelerde performans için kritiktir.
+
+**Neden önemli?** Editör, dosya değişikliklerini izler. `node_modules` gibi on binlerce dosya içeren klasörleri izlemek gereksiz CPU/RAM kullanır.
+
+| Kategori | Örüntüler | Neden Hariç Tutulur? |
+|----------|-----------|---------------------|
+| **Sistem** | `.git/objects/**`, `.DS_Store`, `Thumbs.db` | Git objeleri ve OS önbellek dosyaları. Kod değil. |
+| **Node/Web** | `node_modules/**`, `dist/**`, `build/**`, `.next/**`, `.nuxt/**`, `coverage/**`, `.cache/**` | Bağımlılıklar ve derleme çıktıları. Değişiklik izlemeye gerek yok. |
+| **Python** | `__pycache__/**`, `.venv/**`, `venv/**` | Python bytecode ve sanal ortamlar. |
+| **Mobile** | `ios/Pods/**`, `android/app/build/**`, `.dart_tool/**`, `flutter/bin/cache/**` | iOS/Android/Flutter derleme önbellekleri. |
+| **Derleme** | `target/**`, `bin/**`, `obj/**` | Rust, Java, .NET derleme çıktıları. |
+
+> **💡 İpucu:** Projenize özgü büyük klasörler varsa (örn. `data/`, `assets/videos/`), bunları da ekleyebilirsiniz.
+
+---
+
+### 🔍 Bölüm 4: Arama Hariç Tutma Listesi
+
+`search.exclude` ayarı, **Ctrl+Shift+F** aramalarından hangi dosya/klasörlerin hariç tutulacağını belirler.
+
+| Örüntü | Neden Hariç Tutulur? |
+|--------|---------------------|
+| `**/node_modules` | Binlerce bağımlılık dosyası. Arama sonuçlarını kirletir. |
+| `**/dist`, `**/.next` | Derleme çıktıları. Kaynak kod değil. |
+| `**/yarn.lock`, `**/package-lock.json` | Otomatik oluşturulan lock dosyaları. Aranacak bir şey yok. |
+| `**/*.min.js` | Minify edilmiş JavaScript. Okunamaz, aranmaya değmez. |
+
+---
+
+### ⚙️ Bölüm 5: Diğer Performans Ayarları
+
+Bu ayarlar, editörün genel performansını ve davranışını etkiler.
+
+| Ayar | Varsayılan | Açıklama |
+|------|-----------|----------|
+| `editor.codeLens` | `false` | **Referans Sayacı.** Fonksiyon/class üstünde "3 references" gibi bilgi gösterir. **Kapalı tutmanız önerilir** çünkü sürekli AST analizi yapar ve büyük projelerde CPU'yu yorar. Açarsanız referans bilgisi görürsünüz ama performans düşer. |
+| `workbench.reduceMotion` | `"on"` | **Hareket Azaltma.** Tüm UI animasyonlarını devre dışı bırakır (tab geçişleri, panel açılışları vs.). `"on"` performans için idealdir. `"off"` yaparsanız animasyonlar geri gelir. |
+| `editor.minimap.enabled` | `false` | **Minimap (Kod Haritası).** Editörün sağında küçük kod önizlemesi gösterir. **Kapalı tutmanız önerilir** çünkü her satır için render yapar, büyük dosyalarda GPU'yu yorar. Açarsanız hızlı navigasyon sağlar ama kaynak tüketir. |
+| `files.autoSave` | `"afterDelay"` | **Otomatik Kaydetme.** `"off"`, `"afterDelay"`, `"onFocusChange"`, `"onWindowChange"` seçenekleri var. "afterDelay" ile belirli bir süre sonra otomatik kaydedilir. Ctrl+S stresinden kurtarır. |
+| `files.trimTrailingWhitespace` | `true` | **Satır Sonu Boşluk Temizleme.** Kayıt sırasında satır sonlarındaki gereksiz boşlukları siler. Git diff'lerini temiz tutar ve "whitespace-only" commit kirliliğini önler. Kapatırsanız boşluklar kalır. |
+
+---
+
+### 📊 Performans Etki Özeti
+
+| Ayar | Kaynak Kullanımı | Kapatınca Kazanç |
+|------|-----------------|------------------|
+| `editor.minimap.enabled` | 🔴 Yüksek (GPU) | Büyük dosyalarda belirgin |
+| `editor.codeLens` | 🔴 Yüksek (CPU) | Büyük projelerde belirgin |
+| `files.watcherExclude` | 🟠 Orta (CPU/RAM) | Çok dosyalı projelerde kritik |
+| `workbench.reduceMotion` | 🟡 Düşük (GPU) | Eski donanımda fark edilir |
+| `editor.smoothScrolling` | 🟢 Minimal (GPU) | Nadiren fark edilir |
+
 </details>
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
@@ -194,3 +289,99 @@ These settings control the AI's performance and technical behavior.
 
 -   **What They Are:** These sections define the AI's fundamental rules, like "always read documentation first" (`Truth > Lore`) and "prioritize security" (`Security > Convenience`).
 -   **How to Use:** It is recommended to leave these as they are for stable operation. However, you could theoretically change `Simplicity > Complexity` to `Complexity > Simplicity` to encourage the AI to write more elaborate code, at the risk of over-engineering.
+
+---
+
+## ⚡ Editor Performance Settings (`settings.json`)
+
+This section provides detailed documentation for every setting in the `settings.json` file, which optimizes Antigravity and VS Code editor performance.
+
+### 📁 File Location
+
+The `settings.json` file should be placed in the `.gemini` folder of your workspace. These settings directly affect the VS Code editor engine running beneath Antigravity.
+
+---
+
+### 🧠 Section 1: AI & Intelligence Settings
+
+These settings control Antigravity's AI capabilities.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `antigravity.index.enabled` | `true` | **Project Indexing.** Allows the AI to scan and learn your entire project. If disabled, the AI won't "know" your project—it only sees the currently open file. |
+| `antigravity.liveEmbeddings.enabled` | `true` | **Live Embedding Analysis.** Performs real-time semantic analysis as you type. Disabling reduces CPU usage but decreases the AI's "instant" intelligence. |
+| `antigravity.contextTracking.level` | `"high"` | **Context Tracking Level.** Can be `"low"`, `"medium"`, or `"high"`. At "high", the AI better understands cross-file relationships and provides proactive suggestions. Lowering it reduces RAM usage. |
+| `antigravity.agent.autoFixLints` | `true` | **Auto-Fix Lints.** The AI automatically detects and suggests fixes for code errors (lint errors). If disabled, the AI ignores these errors. |
+| `antigravity.agent.webTools.enabled` | `true` | **Web Tools.** Allows the AI to read documentation from the internet. If disabled, the AI is limited to its local knowledge only. |
+
+---
+
+### 🎨 Section 2: Visual Comfort Settings
+
+These settings improve the code reading experience. Performance impact is low but productivity increases.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `editor.bracketPairColorization.enabled` | `true` | **Colorized Brackets.** Shows each bracket pair in a different color. Disabling makes all brackets the same color, making nested structures harder to read. |
+| `editor.guides.bracketPairs` | `true` | **Bracket Pair Guides.** Shows vertical lines indicating which opening bracket matches which closing bracket. Disabling removes this visual aid. |
+| `editor.guides.indentation` | `true` | **Indentation Guides.** Shows vertical lines for code block indentation. Disabling makes code structure visually less clear. |
+| `editor.smoothScrolling` | `true` | **Smooth Scrolling.** Animates page scrolling. Disabling makes scrolling instant (uses less GPU). |
+| `editor.cursorBlinking` | `"smooth"` | **Cursor Blinking Style.** Options: `"blink"`, `"smooth"`, `"phase"`, `"expand"`, `"solid"`. "Solid" uses the least resources. |
+
+---
+
+### 🚫 Section 3: File Watcher Exclusion List
+
+The `files.watcherExclude` setting determines which folders the editor **should not watch**. This is critical for performance in large projects.
+
+**Why is this important?** The editor monitors file changes. Watching folders containing tens of thousands of files like `node_modules` wastes CPU/RAM unnecessarily.
+
+| Category | Patterns | Why Excluded? |
+|----------|----------|---------------|
+| **System** | `.git/objects/**`, `.DS_Store`, `Thumbs.db` | Git objects and OS cache files. Not code. |
+| **Node/Web** | `node_modules/**`, `dist/**`, `build/**`, `.next/**`, `.nuxt/**`, `coverage/**`, `.cache/**` | Dependencies and build outputs. No need to watch for changes. |
+| **Python** | `__pycache__/**`, `.venv/**`, `venv/**` | Python bytecode and virtual environments. |
+| **Mobile** | `ios/Pods/**`, `android/app/build/**`, `.dart_tool/**`, `flutter/bin/cache/**` | iOS/Android/Flutter build caches. |
+| **Build Outputs** | `target/**`, `bin/**`, `obj/**` | Rust, Java, .NET build outputs. |
+
+> **💡 Tip:** If your project has large custom folders (e.g., `data/`, `assets/videos/`), you can add them too.
+
+---
+
+### 🔍 Section 4: Search Exclusion List
+
+The `search.exclude` setting determines which files/folders are excluded from **Ctrl+Shift+F** searches.
+
+| Pattern | Why Excluded? |
+|---------|---------------|
+| `**/node_modules` | Thousands of dependency files. Pollutes search results. |
+| `**/dist`, `**/.next` | Build outputs. Not source code. |
+| `**/yarn.lock`, `**/package-lock.json` | Auto-generated lock files. Nothing to search for. |
+| `**/*.min.js` | Minified JavaScript. Unreadable, not worth searching. |
+
+---
+
+### ⚙️ Section 5: Other Performance Settings
+
+These settings affect the editor's overall performance and behavior.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `editor.codeLens` | `false` | **Reference Counter.** Shows information like "3 references" above functions/classes. **Recommended to keep OFF** because it continuously performs AST analysis and strains the CPU in large projects. Enabling it shows reference info but reduces performance. |
+| `workbench.reduceMotion` | `"on"` | **Reduce Motion.** Disables all UI animations (tab transitions, panel openings, etc.). `"on"` is ideal for performance. Setting to `"off"` brings back animations. |
+| `editor.minimap.enabled` | `false` | **Minimap (Code Map).** Shows a small code preview on the right side of the editor. **Recommended to keep OFF** because it renders every line and strains the GPU in large files. Enabling provides quick navigation but consumes resources. |
+| `files.autoSave` | `"afterDelay"` | **Auto Save.** Options: `"off"`, `"afterDelay"`, `"onFocusChange"`, `"onWindowChange"`. With "afterDelay", files are automatically saved after a set period. Eliminates Ctrl+S anxiety. |
+| `files.trimTrailingWhitespace` | `true` | **Trim Trailing Whitespace.** Removes unnecessary whitespace at the end of lines when saving. Keeps git diffs clean and prevents "whitespace-only" commit pollution. Disabling leaves whitespace intact. |
+
+---
+
+### 📊 Performance Impact Summary
+
+| Setting | Resource Usage | Gain When Disabled |
+|---------|----------------|-------------------|
+| `editor.minimap.enabled` | 🔴 High (GPU) | Noticeable in large files |
+| `editor.codeLens` | 🔴 High (CPU) | Noticeable in large projects |
+| `files.watcherExclude` | 🟠 Medium (CPU/RAM) | Critical in multi-file projects |
+| `workbench.reduceMotion` | 🟡 Low (GPU) | Noticeable on older hardware |
+| `editor.smoothScrolling` | 🟢 Minimal (GPU) | Rarely noticeable |
+
