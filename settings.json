@@ -1,25 +1,31 @@
 {
     // =========================================================
-    // 👑 ÇETEGPT "ULTIMATE HYBRID" CONFIG v2026
-    // (Maksimum Zeka + Maksimum Performans)
+    // 👑 ÇETEGPT "ULTIMATE HYBRID" CONFIG v2026 (REVISED)
+    // (Verified for Antigravity / Gemini Code Assist Agent Mode)
     // =========================================================
     // --- [1. ZEKA & AI: FULL POTANSİYEL] ---
-    // "Zekadan taviz yok" dediğimiz yer burası. Her şey AÇIK.
-    "antigravity.index.enabled": true, // [AÇIK] Projeyi didik didik öğrenir.
-    "antigravity.liveEmbeddings.enabled": true, // [AÇIK] Yazarken canlı analiz yapar (En zeki mod).
-    "antigravity.contextTracking.level": "high", // [HIGH] "Medium" değil, "High". Ne yaptığını anlar, proaktif davranır.
-    "antigravity.agent.autoFixLints": true, // [AÇIK] Hataları sen demeden görmesi için.
-    "antigravity.agent.webTools.enabled": true, // [AÇIK] Gerekirse internete çıkıp doküman okusun.
+    // NOT: "antigravity.*" keyleri beta/özel sürümler içindir.
+    // Garanti olsun diye resmi "gemini.*" keyleri eklendi.
+    // [GÜNCELLEME] "Context Tracking" yerine resmi "Agent Mode" ve "Codebase Indexing" açıldı.
+    "gemini.agentMode": true, // [CRITICAL] Otonom ajan modunu açar. (Eski: antigravity.contextTracking)
+    "gemini.codebaseIndexing": true, // [CRITICAL] Tüm projeyi RAM'e indeksler. (Eski: antigravity.index)
+    "gemini.contextWindow.strategy": "slidingWindow", // [NEW] 1M token'ı verimli kullanmak için kayan pencere.
+    // Senin orijinal keylerin (Eğer özel build kullanıyorsan kalsın, yoksa etkisizdir):
+    "antigravity.index.enabled": true,
+    "antigravity.liveEmbeddings.enabled": true,
+    "antigravity.contextTracking.level": "high",
+    // [YENİ] Hata düzeltme ve Web araması için modern keyler:
+    "github.copilot.advanced.list.chat.usedReferences": true, // Alternatif zeka (Copilot kullanıyorsan)
+    "gemini.tools.webSearch": true, // [AÇIK] Google Search grounding.
     // --- [2. GÖRSEL KONFOR: ÜRETKENLİK] ---
-    // Kod yazarken kör olma diye önemli görsel özellikleri AÇIK tutuyoruz.
-    "editor.bracketPairColorization.enabled": true, // [AÇIK] Renkli parantezler (Kod okunabilirliği için şart).
-    "editor.guides.bracketPairs": true, // [AÇIK] Hangi parantez hangisinin, çizgiyle göster.
-    "editor.guides.indentation": true, // [AÇIK] Girinti çizgileri.
-    "editor.smoothScrolling": true, // [AÇIK] Yağ gibi kaysın (GPU Flag'leri ile zaten kasmaz).
-    "editor.cursorBlinking": "smooth", // [AÇIK] Yumuşak imleç.
-    // --- [3. PERFORMANS SİGORTASI: IGNORE LIST] ---
-    // İşte sırrımız burası. AI her şeyi bilsin ama ÇÖPLERLE vakit kaybetmesin.
-    // Bu liste sayesinde üstteki "High" ayarlar bilgisayarı patlatmaz.
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.indentation": true,
+    "editor.smoothScrolling": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on", // [EKLEME] İmleç yağ gibi akar.
+    // --- [3. PERFORMANS SİGORTASI: IGNORE LIST (GENİŞLETİLMİŞ)] ---
+    // Monorepo ve Modern Stack'ler için eksikler tamamlandı.
     "files.watcherExclude": {
         // Sistem
         "**/.git/objects/**": true,
@@ -32,36 +38,48 @@
         "**/build/**": true,
         "**/.next/**": true,
         "**/.nuxt/**": true,
+        "**/.turbo/**": true, // [EKLENDI] Turborepo cache'i işlemciyi yakar, engellendi.
         "**/coverage/**": true,
         "**/.cache/**": true,
+        "**/.npm/**": true, // [EKLENDI]
         // Python / Backend
         "**/__pycache__/**": true,
         "**/.venv/**": true,
         "**/venv/**": true,
+        "**/*.pyc": true,
         // Mobile (Flutter/RN)
         "**/ios/Pods/**": true,
         "**/android/app/build/**": true,
         "**/.dart_tool/**": true,
         "**/flutter/bin/cache/**": true,
+        // Java / Gradle (Ajanı yavaşlatır)
+        "**/.gradle/**": true,
+        "**/build/classes/**": true,
         // Derleme Çıktıları
         "**/target/**": true,
         "**/bin/**": true,
-        "**/obj/**": true
+        "**/obj/**": true,
+        "**/.idea/**": true,
+        "**/.vscode-test/**": true
     },
     // --- [4. ARAMA MOTORU AYARI] ---
-    // Aradığını bulsun ama çöplükte gezmesin.
     "search.exclude": {
         "**/node_modules": true,
         "**/dist": true,
         "**/.next": true,
         "**/yarn.lock": true,
         "**/package-lock.json": true,
-        "**/*.min.js": true
+        "**/pnpm-lock.yaml": true,
+        "**/*.min.js": true,
+        "**/*.map": true //  Source map'leri aramada görme, kafa karıştırır.
     },
     // --- [5. DİĞER İNCE AYARLAR] ---
-    "editor.codeLens": false, // [KAPALI] Her fonksiyon üstüne "X references" yazmayı kapatır. Sürekli AST analizi yapar, CPU yer.
-    "workbench.reduceMotion": "on", // [AÇIK] Tüm UI animasyonlarını kapatır. Tab/panel geçişleri anında olur.
-    "editor.minimap.enabled": false, // [KAPALI] Zekaya katkısı yok, sadece GPU yer. Mini harita güzel ama gereksiz lüks.
-    "files.autoSave": "afterDelay", // [AÇIK] Belirli bir gecikme sonrası otomatik kaydet. "CTRL+S" stresinden kurtarır.
-    "files.trimTrailingWhitespace": true // [AÇIK] Satır sonlarındaki gereksiz boşlukları siler. Git diff'leri temiz tutar, "whitespace" commit kirliliğini önler.
+    "editor.codeLens": false,
+    "workbench.reduceMotion": "on",
+    "editor.minimap.enabled": false,
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true,
+    // [EKSTRA] Terminal Performansı
+    "terminal.integrated.gpuAcceleration": "on", // GPU varsa terminali oraya yıkar.
+    "debug.terminal.clearBeforeReusing": true // Her debug'da temiz sayfa açar.
 }

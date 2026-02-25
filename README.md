@@ -16,7 +16,19 @@
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
-### 🚀 Son Güncelleme (v1.2) - "Sistem Mimari Yeniden Tasarımı"
+### 🚀 Son Güncelleme (v1.3) - "Otonomi ve Gerçeklik Protokolü (The Truth Protocol)"
+- **Mental Yükseltme:** `ULTRA-PRO-MAXIMUM-OVERCLOCK MODE` ve `thinking_level: "high"` aktif edildi. `gemini-3.1-pro-preview` model sürümüne geçildi.
+- **Diyalog Senkronizasyonu (`State Synchronization`):** AI'ın salt teknik eylemlere boğulması engellendi. Kullanıcı bir soru sorduğunda veya araya girdiğinde, araç (tool) silsilesi bekletilip *önce* doğal dille yanıt verilmesi (senkronizasyon) zorunlu kılındı.
+- **Gerçeklik Protokolü (`The Truth Protocol`):** Teorik bilginin yerini anlık "canlı dosya" incelemesi (`Chronological Reconnaissance`) aldı. Yerel dosya durumu her zaman eğitim verisine üstün kılındı.
+- **Taktiksel Güvenlik Çerçevesi:** Yıkıcı (silme/yok etme) eylemler otonom karar mekanizmasından çıkarıldı. AI güvenlik açığı bulduğunda doğrudan infaz etmek yerine, taktiksel bir danışman gibi hareket edip raporlayacak ve onay (`explicit mandate`) bekleyecek.
+- **Adaptif Loglama:** Çalışılan editöre (Antigravity/Cursor/Terminal) uygun, proje kirliliğini önleyen dinamik log tutma yapısı eklendi.
+- **Editör/Ajan Optimizasyonu (`settings.json`):**
+  - Otonom ajan modları için resmi `gemini.*` (agentMode, codebaseIndexing) anahtarları eklendi.
+  - Monorepo sistemlerini ve CPU yiyen önbellekleri (`.turbo`, `.npm`, `.gradle`) yoksayacak ağır bir `watcherExclude` listesi oluşturuldu.
+  - AI'ın kafasını karıştıran kaynak haritaları (`*.map`), `search.exclude` ile filtrelendi.
+  - Log akışlarında UI donmalarını engellemek için GPU tabanlı terminal hızlandırması aktif edildi.
+
+### 🚀 Önceki Güncelleme (v1.2) - "Sistem Mimari Yeniden Tasarımı"
 - **Pozitif Dil:** "ASLA/YAPMA" ifadeleri kaldırıldı, "bunun yerine şunu yap" formatına dönüştürüldü.
 - **Modüler Mimari (Yeni Bölüm VI):** Domain-driven folder yapısı, küçük dosyalar, deep hierarchies zorunlu hale getirildi.
 - **Explicit Cross-References:** Her protokol artık birbirine section numaralarıyla referans veriyor.
@@ -200,7 +212,19 @@ Bu ayarlar, editörün genel performansını ve davranışını etkiler.
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
 
-### 🚀 Latest Update (v1.2) - "System Architecture Redesign"
+### 🚀 Latest Update (v1.3) - "Autonomy & The Truth Protocol"
+- **Mental Upgrade:** Activated `ULTRA-PRO-MAXIMUM-OVERCLOCK MODE` and `thinking_level: "high"`. Upgraded model target to `gemini-3.1-pro-preview`.
+- **Dialogue Synchronization (`State Synchronization`):** Calibrated the execution pipeline to the user's conversational state. When a user asks a question, the AI must prioritize natural language response before dispatching further tool operations.
+- **The Truth Protocol:** Prioritizes active local environment and chronological file statuses over assumed/training knowledge (`Chronological Reconnaissance`).
+- **Tactical Security Framework:** Transformed the AI from an autonomous executioner to a tactical advisor. Destructive actions (like file nuking) now require explicit user mandate rather than acting solely on the "Security > Convenience" doctrine.
+- **Adaptive Logging:** Implemented environment-aware logging mechanisms (Antigravity vs. Raw CLI) to prevent redundant log spam and maintain clean workspaces.
+- **Editor/Agent Optimization (`settings.json`):**
+  - Integrated official `gemini.*` keys for robust agent autonomy (agentMode, codebaseIndexing).
+  - Expanded `watcherExclude` to aggressively blacklist CPU-hungry monorepo and system caches (`.turbo`, `.npm`, `.gradle`).
+  - Filtered out source maps (`*.map`) via `search.exclude` to prevent AI context pollution during codebase lookups.
+  - Enabled GPU acceleration for the integrated terminal to prevent UI freezes during heavy log output.
+
+### 🚀 Previous Update (v1.2) - "System Architecture Redesign"
 - **Positive Language:** Removed all "NEVER/DON'T" language, replaced with "use this instead of that" format.
 - **Modular Architecture (New Section VI):** Domain-driven folders, small files, deep hierarchies now mandatory.
 - **Explicit Cross-References:** Every protocol now references others by section numbers.
