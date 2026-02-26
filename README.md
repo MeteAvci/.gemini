@@ -23,7 +23,8 @@ Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Ö
 - **Taktiksel Güvenlik Çerçevesi:** Yıkıcı (silme/yok etme) eylemler otonom karar mekanizmasından çıkarıldı. AI güvenlik açığı bulduğunda doğrudan infaz etmek yerine, taktiksel bir danışman gibi hareket edip raporlayacak ve onay (`explicit mandate`) bekleyecek.
 - **Adaptif Loglama:** Çalışılan editöre (Antigravity/Cursor/Terminal) uygun, proje kirliliğini önleyen dinamik log tutma yapısı eklendi.
 - **Editör/Ajan Optimizasyonu (`settings.json`):**
-  - Otonom ajan modları için resmi `gemini.*` (agentMode, codebaseIndexing) anahtarları eklendi.
+  - Tam otonomi (YOLO Modu) için resmi `geminicodeassist.*` ve `antigravity.agent.*` anahtarları eklendi. AI artık "stajyer" gibi her komutta onay beklemez.
+  - Ajanın terminal çıktılarını net okuyabilmesi (Terminal Blindness) için `shellIntegration` kapatıldı, `autoSave` çakışmaları (race condition) `onFocusChange` ile çözüldü.
   - Monorepo sistemlerini ve CPU yiyen önbellekleri (`.turbo`, `.npm`, `.gradle`) yoksayacak ağır bir `watcherExclude` listesi oluşturuldu.
   - AI'ın kafasını karıştıran kaynak haritaları (`*.map`), `search.exclude` ile filtrelendi.
   - Log akışlarında UI donmalarını engellemek için GPU tabanlı terminal hızlandırması aktif edildi.
@@ -34,9 +35,7 @@ Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Ö
 - **Explicit Cross-References:** Her protokol artık birbirine section numaralarıyla referans veriyor.
 - **Tools First:** 3-adımlı decision tree ile built-in araçlar zorunlu hale getirildi.
 - **Güvenlik:** Counter-Intelligence artık proactive, tüm protokoller koordineli çalışıyor.
-- **Manifest:** "Structure > Chaos" ve "Vigilance > Naivety" ilkeleri eklendi.
-
-[Detaylı v1.2 Release Notes için tıklayın](https://github.com/MeteAvci/.gemini/releases/tag/v1.2)
+- **Manifest:** "Structure > Chaos" ve "Vigilance > Naivety" ilkeleri eklendi.[Detaylı v1.2 Release Notes için tıklayın](https://github.com/MeteAvci/.gemini/releases/tag/v1.2)
 
 ### 🚀 Önceki Güncelleme (v1.1) - "Avcı Güncellemesi (Hotfix)"
 - **Güvenlik (Avcı Protokolü):** "Karşı İstihbarat" ve "Araç Güvenilirliği" protokolleri eklendi.
@@ -125,17 +124,18 @@ Bu bölüm, Antigravity ve VS Code editörünün performansını optimize eden `
 
 ---
 
-### 🧠 Bölüm 1: Zeka & AI Ayarları
+### 🧠 Bölüm 1: Zeka & Ajan Otonomisi Ayarları
 
-Bu ayarlar, Antigravity'nin AI yeteneklerini kontrol eder.
+Bu ayarlar, Antigravity'nin AI yeteneklerini ve "YOLO" (Tam Otonomi) limitlerini kontrol eder.
 
 | Ayar | Varsayılan | Açıklama |
 |------|-----------|----------|
-| `antigravity.index.enabled` | `true` | **Proje İndeksleme.** AI'ın tüm proje dosyalarını tarayıp öğrenmesini sağlar. Kapatırsanız AI projenizi "tanımaz", sadece açık dosyayı görür. |
-| `antigravity.liveEmbeddings.enabled` | `true` | **Canlı Embedding Analizi.** Kod yazarken gerçek zamanlı semantik analiz yapar. Kapatırsanız CPU kullanımı düşer ama AI'ın "anlık" zekası azalır. |
-| `antigravity.contextTracking.level` | `"high"` | **Bağlam Takip Seviyesi.** `"low"`, `"medium"` veya `"high"` olabilir. "High" seviyesinde AI, dosyalar arası ilişkileri daha iyi anlar ve proaktif önerilerde bulunur. Düşürürseniz RAM kullanımı azalır. |
-| `antigravity.agent.autoFixLints` | `true` | **Otomatik Lint Düzeltme.** AI, kod hatalarını (lint errors) otomatik olarak tespit eder ve önerir. Kapatırsanız AI hataları görmezden gelir. |
-| `antigravity.agent.webTools.enabled` | `true` | **Web Araçları.** AI'ın internetten dokümantasyon okumasına izin verir. Kapatırsanız AI sadece yerel bilgisiyle sınırlı kalır. |
+| `geminicodeassist.agentYoloMode` | `true` | **Tam Otonomi (YOLO).** Ajanın dosya düzenlerken veya terminalde komut çalıştırırken onay beklemesini engeller. |
+| `geminicodeassist.enableCodebaseIndexing` | `true` | **Proje İndeksleme.** Tüm projeyi anında RAM'e indeksler. AI'ın tüm projeyi tanımasını sağlar. |
+| `geminicodeassist.contextWindow` | `"1m"` | **Bağlam Sınırı.** AI'ın hafızasını 1 Milyon token sınırına zorlar. |
+| `geminicodeassist.rules` | `"Read..."` | **Anayasa Entegrasyonu.** Ajanın serseri mayın gibi davranmasını engeller, ana dizindeki `GEMINI.md` kurallarını okumaya zorlar. |
+| `antigravity.agent.defaultConversationMode` | `"planning"` | **Düşünme Modu.** Ajanın kod yazmadan önce mimari plan yapmasını zorlar ("Fast" mod hatalarını önler). |
+| `antigravity.agent.reviewPolicy` | `"alwaysProceed"` | **Onay Otonomisi.** Değişiklikleri "Accept" butonunu beklemeden doğrudan uygular. |
 
 ---
 
@@ -145,68 +145,63 @@ Bu ayarlar, kod okuma deneyimini iyileştirir. Performans etkisi düşüktür an
 
 | Ayar | Varsayılan | Açıklama |
 |------|-----------|----------|
-| `editor.bracketPairColorization.enabled` | `true` | **Renkli Parantezler.** Her parantez çiftini farklı renkte gösterir. Kapatırsanız tüm parantezler aynı renk olur, iç içe yapıları okumak zorlaşır. |
-| `editor.guides.bracketPairs` | `true` | **Parantez Kılavuz Çizgileri.** Hangi açma parantezinin hangi kapama paranteziyle eşleştiğini dikey çizgiyle gösterir. Kapatırsanız bu görsel yardım kaybolur. |
-| `editor.guides.indentation` | `true` | **Girinti Kılavuz Çizgileri.** Kod bloklarının girintilerini dikey çizgilerle gösterir. Kapatırsanız kod yapısı görsel olarak daha belirsiz olur. |
-| `editor.smoothScrolling` | `true` | **Yumuşak Kaydırma.** Sayfa kaydırma animasyonu. Kapatırsanız kaydırma anlık olur (daha az GPU kullanır). |
-| `editor.cursorBlinking` | `"smooth"` | **İmleç Yanıp Sönme Stili.** `"blink"`, `"smooth"`, `"phase"`, `"expand"`, `"solid"` seçenekleri var. "Solid" en az kaynak kullanır. |
+| `editor.bracketPairColorization.enabled` | `true` | **Renkli Parantezler.** Her parantez çiftini farklı renkte gösterir. Kapatırsanız tüm parantezler aynı renk olur. |
+| `editor.guides.bracketPairs` | `true` | **Parantez Kılavuz Çizgileri.** Hangi açma parantezinin hangi kapama paranteziyle eşleştiğini gösterir. |
+| `editor.guides.indentation` | `true` | **Girinti Kılavuz Çizgileri.** Kod bloklarının girintilerini dikey çizgilerle gösterir. |
+| `editor.smoothScrolling` | `true` | **Yumuşak Kaydırma.** Sayfa kaydırma animasyonu sağlar. |
+| `editor.cursorSmoothCaretAnimation` | `"on"` | **Yumuşak İmleç.** İmlecin yazı yazarken yağ gibi akmasını sağlar. |
 
 ---
 
 ### 🚫 Bölüm 3: Dosya İzleyici Hariç Tutma Listesi
 
-`files.watcherExclude` ayarı, editörün hangi klasörleri **izlemeyeceğini** belirler. Bu, büyük projelerde performans için kritiktir.
-
-**Neden önemli?** Editör, dosya değişikliklerini izler. `node_modules` gibi on binlerce dosya içeren klasörleri izlemek gereksiz CPU/RAM kullanır.
+`files.watcherExclude` ayarı, editörün hangi klasörleri **izlemeyeceğini** belirler. Bu, 1 Milyon Token'lık AI bağlamını çöplerden korumak için kritiktir.
 
 | Kategori | Örüntüler | Neden Hariç Tutulur? |
 |----------|-----------|---------------------|
-| **Sistem** | `.git/objects/**`, `.DS_Store`, `Thumbs.db` | Git objeleri ve OS önbellek dosyaları. Kod değil. |
-| **Node/Web** | `node_modules/**`, `dist/**`, `build/**`, `.next/**`, `.nuxt/**`, `coverage/**`, `.cache/**` | Bağımlılıklar ve derleme çıktıları. Değişiklik izlemeye gerek yok. |
-| **Python** | `__pycache__/**`, `.venv/**`, `venv/**` | Python bytecode ve sanal ortamlar. |
-| **Mobile** | `ios/Pods/**`, `android/app/build/**`, `.dart_tool/**`, `flutter/bin/cache/**` | iOS/Android/Flutter derleme önbellekleri. |
-| **Derleme** | `target/**`, `bin/**`, `obj/**` | Rust, Java, .NET derleme çıktıları. |
-
-> **💡 İpucu:** Projenize özgü büyük klasörler varsa (örn. `data/`, `assets/videos/`), bunları da ekleyebilirsiniz.
+| **Sistem** | `.git/objects/**`, `.DS_Store`, `Thumbs.db` | Git objeleri ve OS önbellek dosyaları. |
+| **Node/Web** | `node_modules/**`, `dist/**`, `build/**`, `.next/**`, `.turbo/**`, `.npm/**`, `.cache/**` | Bağımlılıklar, Turborepo önbellekleri ve derleme çıktıları. |
+| **Python** | `__pycache__/**`, `.venv/**`, `venv/**`, `**/*.pyc` | Python bytecode ve sanal ortamlar. |
+| **Mobile** | `ios/Pods/**`, `android/app/build/**`, `.dart_tool/**` | iOS/Android/Flutter derleme önbellekleri. |
+| **Derleme & IDE** | `target/**`, `bin/**`, `.gradle/**`, `build/classes/**`, `.idea/**`, `.vscode-test/**` | Java/Gradle çıktıları ve Jetbrains çöp dosyaları. |
 
 ---
 
 ### 🔍 Bölüm 4: Arama Hariç Tutma Listesi
 
-`search.exclude` ayarı, **Ctrl+Shift+F** aramalarından hangi dosya/klasörlerin hariç tutulacağını belirler.
+`search.exclude` ayarı, aramalarından hangi dosya/klasörlerin hariç tutulacağını belirler.
 
 | Örüntü | Neden Hariç Tutulur? |
 |--------|---------------------|
 | `**/node_modules` | Binlerce bağımlılık dosyası. Arama sonuçlarını kirletir. |
 | `**/dist`, `**/.next` | Derleme çıktıları. Kaynak kod değil. |
-| `**/yarn.lock`, `**/package-lock.json` | Otomatik oluşturulan lock dosyaları. Aranacak bir şey yok. |
-| `**/*.min.js` | Minify edilmiş JavaScript. Okunamaz, aranmaya değmez. |
+| `**/yarn.lock`, `**/pnpm-lock.yaml` | Otomatik oluşturulan lock dosyaları. |
+| `**/*.min.js`, `**/*.map` | Minify edilmiş kodlar ve Kaynak Haritaları (Source maps). Ajanın kafasını karıştırır. |
 
 ---
 
-### ⚙️ Bölüm 5: Diğer Performans Ayarları
+### ⚙️ Bölüm 5: Terminal Görüşü, Güvenlik ve Performans Ayarları
 
-Bu ayarlar, editörün genel performansını ve davranışını etkiler.
+Bu ayarlar, AI'ın terminali okuma yeteneğini ve veri çakışmalarını yönetir.
 
 | Ayar | Varsayılan | Açıklama |
 |------|-----------|----------|
-| `editor.codeLens` | `false` | **Referans Sayacı.** Fonksiyon/class üstünde "3 references" gibi bilgi gösterir. **Kapalı tutmanız önerilir** çünkü sürekli AST analizi yapar ve büyük projelerde CPU'yu yorar. Açarsanız referans bilgisi görürsünüz ama performans düşer. |
-| `workbench.reduceMotion` | `"on"` | **Hareket Azaltma.** Tüm UI animasyonlarını devre dışı bırakır (tab geçişleri, panel açılışları vs.). `"on"` performans için idealdir. `"off"` yaparsanız animasyonlar geri gelir. |
-| `editor.minimap.enabled` | `false` | **Minimap (Kod Haritası).** Editörün sağında küçük kod önizlemesi gösterir. **Kapalı tutmanız önerilir** çünkü her satır için render yapar, büyük dosyalarda GPU'yu yorar. Açarsanız hızlı navigasyon sağlar ama kaynak tüketir. |
-| `files.autoSave` | `"afterDelay"` | **Otomatik Kaydetme.** `"off"`, `"afterDelay"`, `"onFocusChange"`, `"onWindowChange"` seçenekleri var. "afterDelay" ile belirli bir süre sonra otomatik kaydedilir. Ctrl+S stresinden kurtarır. |
-| `files.trimTrailingWhitespace` | `true` | **Satır Sonu Boşluk Temizleme.** Kayıt sırasında satır sonlarındaki gereksiz boşlukları siler. Git diff'lerini temiz tutar ve "whitespace-only" commit kirliliğini önler. Kapatırsanız boşluklar kalır. |
+| `terminal.integrated.shellIntegration.enabled` | `false` | **Terminal Körlüğü Koruması (Kritik).** VS Code escape kodlarını silerek, ajanın terminal çıktılarını (hata logları vb.) kör olmadan net bir şekilde okumasını sağlar. |
+| `files.autoSave` | `"onFocusChange"` | **Güvenli Kaydetme.** Sadece pencere odağı değişince kaydeder. Ajan kod okurken sizin yazı yazmanızdan doğacak "Race Condition" (Çakışma/Halüsinasyon) hatalarını önler. |
+| `typescript.tsserver.experimental.enableProjectDiagnostics` | `true` | **Tam Proje Tip Güvenliği.** Ajanın, İzleyici'den (Watcher) dışlanmış olsa bile tüm projeyi LSP üzerinden tip hatasız (Type-Safe) görmesini sağlar. |
+| `editor.codeLens` | `false` | **Referans Sayacı.** Fonksiyon üstünde "3 references" bilgisini kapatır. Sürekli AST analizi yapmasını ve CPU'yu yormasını engeller. |
+| `terminal.integrated.gpuAcceleration` | `"on"` | **GPU Hızlandırması.** Terminalde çok hızlı log akarken UI'ın donmasını engeller. |
 
 ---
 
 ### 📊 Performans Etki Özeti
 
-| Ayar | Kaynak Kullanımı | Kapatınca Kazanç |
+| Ayar | Kaynak Kullanımı | Kapatınca/Açınca Kazanç |
 |------|-----------------|------------------|
-| `editor.minimap.enabled` | 🔴 Yüksek (GPU) | Büyük dosyalarda belirgin |
-| `editor.codeLens` | 🔴 Yüksek (CPU) | Büyük projelerde belirgin |
-| `files.watcherExclude` | 🟠 Orta (CPU/RAM) | Çok dosyalı projelerde kritik |
-| `workbench.reduceMotion` | 🟡 Düşük (GPU) | Eski donanımda fark edilir |
-| `editor.smoothScrolling` | 🟢 Minimal (GPU) | Nadiren fark edilir |
+| `editor.minimap.enabled` | 🔴 Yüksek (GPU) | Kapatınca büyük dosyalarda rahatlama |
+| `files.autoSave: onFocusChange`| 🔴 Yüksek (Zeka)| AI çakışmalarını ve hatalı kod yazımını kökten çözer |
+| `files.watcherExclude` | 🟠 Orta (CPU/RAM) | AI'ın Token limitini çöplerden korur |
+| `workbench.reduceMotion` | 🟡 Düşük (GPU) | Eski donanımda UI tepkimesini hızlandırır |
 
 </details>
 
@@ -219,7 +214,8 @@ This repository hosts the configuration files for my personal AI tool. It is **s
 - **Tactical Security Framework:** Transformed the AI from an autonomous executioner to a tactical advisor. Destructive actions (like file nuking) now require explicit user mandate rather than acting solely on the "Security > Convenience" doctrine.
 - **Adaptive Logging:** Implemented environment-aware logging mechanisms (Antigravity vs. Raw CLI) to prevent redundant log spam and maintain clean workspaces.
 - **Editor/Agent Optimization (`settings.json`):**
-  - Integrated official `gemini.*` keys for robust agent autonomy (agentMode, codebaseIndexing).
+  - Integrated official `geminicodeassist.*` and `antigravity.agent.*` keys for full agent autonomy (YOLO Mode). The AI no longer waits for permission like an intern.
+  - Disabled `shellIntegration` to prevent "Terminal Blindness" so the AI can cleanly scrape terminal outputs. Fixed race conditions/hallucinations by setting `autoSave` to `onFocusChange`.
   - Expanded `watcherExclude` to aggressively blacklist CPU-hungry monorepo and system caches (`.turbo`, `.npm`, `.gradle`).
   - Filtered out source maps (`*.map`) via `search.exclude` to prevent AI context pollution during codebase lookups.
   - Enabled GPU acceleration for the integrated terminal to prevent UI freezes during heavy log output.
@@ -230,9 +226,7 @@ This repository hosts the configuration files for my personal AI tool. It is **s
 - **Explicit Cross-References:** Every protocol now references others by section numbers.
 - **Tools First:** 3-step decision tree makes built-in tools mandatory.
 - **Security:** Counter-Intelligence now proactive, all protocols work coordinately.
-- **Manifest:** Added "Structure > Chaos" and "Vigilance > Naivety" principles.
-
-[Click for detailed v1.2 Release Notes](https://github.com/MeteAvci/.gemini/releases/tag/v1.2)
+- **Manifest:** Added "Structure > Chaos" and "Vigilance > Naivety" principles.[Click for detailed v1.2 Release Notes](https://github.com/MeteAvci/.gemini/releases/tag/v1.2)
 
 ### 🚀 Previous Update (v1.1) - "The Predator Update (Hotfix)"
 - **Security (Predator Protocol):** Added "Counter-Intelligence" and "Tool Reliability" protocols.
@@ -326,17 +320,18 @@ The `settings.json` file should be placed in the `.gemini` folder of your worksp
 
 ---
 
-### 🧠 Section 1: AI & Intelligence Settings
+### 🧠 Section 1: AI & Agent Autonomy Settings
 
-These settings control Antigravity's AI capabilities.
+These settings control Antigravity's AI capabilities and "YOLO" (Full Autonomy) limits.
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `antigravity.index.enabled` | `true` | **Project Indexing.** Allows the AI to scan and learn your entire project. If disabled, the AI won't "know" your project—it only sees the currently open file. |
-| `antigravity.liveEmbeddings.enabled` | `true` | **Live Embedding Analysis.** Performs real-time semantic analysis as you type. Disabling reduces CPU usage but decreases the AI's "instant" intelligence. |
-| `antigravity.contextTracking.level` | `"high"` | **Context Tracking Level.** Can be `"low"`, `"medium"`, or `"high"`. At "high", the AI better understands cross-file relationships and provides proactive suggestions. Lowering it reduces RAM usage. |
-| `antigravity.agent.autoFixLints` | `true` | **Auto-Fix Lints.** The AI automatically detects and suggests fixes for code errors (lint errors). If disabled, the AI ignores these errors. |
-| `antigravity.agent.webTools.enabled` | `true` | **Web Tools.** Allows the AI to read documentation from the internet. If disabled, the AI is limited to its local knowledge only. |
+| `geminicodeassist.agentYoloMode` | `true` | **Full Autonomy (YOLO).** Prevents the agent from waiting for permission when modifying files or running terminal commands. |
+| `geminicodeassist.enableCodebaseIndexing` | `true` | **Project Indexing.** Instantly indexes the entire project into RAM, allowing the AI to "know" your entire codebase. |
+| `geminicodeassist.contextWindow` | `"1m"` | **Context Limit.** Forces the AI's memory to the 1 Million token threshold. |
+| `geminicodeassist.rules` | `"Read..."` | **Constitution Integration.** Forces the agent to strictly follow the `GEMINI.md` rules in the root directory so it doesn't act like a loose cannon. |
+| `antigravity.agent.defaultConversationMode` | `"planning"` | **Thinking Mode.** Forces the agent to formulate an architectural plan before writing code (prevents "Fast" mode errors). |
+| `antigravity.agent.reviewPolicy` | `"alwaysProceed"` | **Autonomy Approval.** Applies changes directly without waiting for you to click "Accept". |
 
 ---
 
@@ -346,66 +341,62 @@ These settings improve the code reading experience. Performance impact is low bu
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `editor.bracketPairColorization.enabled` | `true` | **Colorized Brackets.** Shows each bracket pair in a different color. Disabling makes all brackets the same color, making nested structures harder to read. |
-| `editor.guides.bracketPairs` | `true` | **Bracket Pair Guides.** Shows vertical lines indicating which opening bracket matches which closing bracket. Disabling removes this visual aid. |
-| `editor.guides.indentation` | `true` | **Indentation Guides.** Shows vertical lines for code block indentation. Disabling makes code structure visually less clear. |
-| `editor.smoothScrolling` | `true` | **Smooth Scrolling.** Animates page scrolling. Disabling makes scrolling instant (uses less GPU). |
-| `editor.cursorBlinking` | `"smooth"` | **Cursor Blinking Style.** Options: `"blink"`, `"smooth"`, `"phase"`, `"expand"`, `"solid"`. "Solid" uses the least resources. |
+| `editor.bracketPairColorization.enabled` | `true` | **Colorized Brackets.** Shows each bracket pair in a different color. |
+| `editor.guides.bracketPairs` | `true` | **Bracket Pair Guides.** Shows vertical lines indicating which opening bracket matches which closing bracket. |
+| `editor.guides.indentation` | `true` | **Indentation Guides.** Shows vertical lines for code block indentation. |
+| `editor.smoothScrolling` | `true` | **Smooth Scrolling.** Animates page scrolling. |
+| `editor.cursorSmoothCaretAnimation` | `"on"` | **Smooth Caret.** Makes the cursor flow smoothly as you type. |
 
 ---
 
 ### 🚫 Section 3: File Watcher Exclusion List
 
-The `files.watcherExclude` setting determines which folders the editor **should not watch**. This is critical for performance in large projects.
-
-**Why is this important?** The editor monitors file changes. Watching folders containing tens of thousands of files like `node_modules` wastes CPU/RAM unnecessarily.
+The `files.watcherExclude` setting determines which folders the editor **should not watch**. This is critical for protecting the AI's 1 Million Token context from garbage files.
 
 | Category | Patterns | Why Excluded? |
 |----------|----------|---------------|
 | **System** | `.git/objects/**`, `.DS_Store`, `Thumbs.db` | Git objects and OS cache files. Not code. |
-| **Node/Web** | `node_modules/**`, `dist/**`, `build/**`, `.next/**`, `.nuxt/**`, `coverage/**`, `.cache/**` | Dependencies and build outputs. No need to watch for changes. |
-| **Python** | `__pycache__/**`, `.venv/**`, `venv/**` | Python bytecode and virtual environments. |
-| **Mobile** | `ios/Pods/**`, `android/app/build/**`, `.dart_tool/**`, `flutter/bin/cache/**` | iOS/Android/Flutter build caches. |
-| **Build Outputs** | `target/**`, `bin/**`, `obj/**` | Rust, Java, .NET build outputs. |
-
-> **💡 Tip:** If your project has large custom folders (e.g., `data/`, `assets/videos/`), you can add them too.
+| **Node/Web** | `node_modules/**`, `dist/**`, `build/**`, `.next/**`, `.turbo/**`, `.npm/**`, `.cache/**` | Dependencies, Turborepo caches, and build outputs. |
+| **Python** | `__pycache__/**`, `.venv/**`, `venv/**`, `**/*.pyc` | Python bytecode and virtual environments. |
+| **Mobile** | `ios/Pods/**`, `android/app/build/**`, `.dart_tool/**` | iOS/Android/Flutter build caches. |
+| **Build & IDE** | `target/**`, `bin/**`, `.gradle/**`, `build/classes/**`, `.idea/**`, `.vscode-test/**` | Java/Gradle outputs and Jetbrains junk files. |
 
 ---
 
 ### 🔍 Section 4: Search Exclusion List
 
-The `search.exclude` setting determines which files/folders are excluded from **Ctrl+Shift+F** searches.
+The `search.exclude` setting determines which files/folders are excluded from searches.
 
 | Pattern | Why Excluded? |
 |---------|---------------|
 | `**/node_modules` | Thousands of dependency files. Pollutes search results. |
 | `**/dist`, `**/.next` | Build outputs. Not source code. |
-| `**/yarn.lock`, `**/package-lock.json` | Auto-generated lock files. Nothing to search for. |
-| `**/*.min.js` | Minified JavaScript. Unreadable, not worth searching. |
+| `**/yarn.lock`, `**/pnpm-lock.yaml` | Auto-generated lock files. |
+| `**/*.min.js`, `**/*.map` | Minified code and Source Maps. Confuses the agent during searches. |
 
 ---
 
-### ⚙️ Section 5: Other Performance Settings
+### ⚙️ Section 5: Terminal Vision, Security & Performance Settings
 
-These settings affect the editor's overall performance and behavior.
+These settings manage the AI's ability to read the terminal and prevent data conflicts.
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `editor.codeLens` | `false` | **Reference Counter.** Shows information like "3 references" above functions/classes. **Recommended to keep OFF** because it continuously performs AST analysis and strains the CPU in large projects. Enabling it shows reference info but reduces performance. |
-| `workbench.reduceMotion` | `"on"` | **Reduce Motion.** Disables all UI animations (tab transitions, panel openings, etc.). `"on"` is ideal for performance. Setting to `"off"` brings back animations. |
-| `editor.minimap.enabled` | `false` | **Minimap (Code Map).** Shows a small code preview on the right side of the editor. **Recommended to keep OFF** because it renders every line and strains the GPU in large files. Enabling provides quick navigation but consumes resources. |
-| `files.autoSave` | `"afterDelay"` | **Auto Save.** Options: `"off"`, `"afterDelay"`, `"onFocusChange"`, `"onWindowChange"`. With "afterDelay", files are automatically saved after a set period. Eliminates Ctrl+S anxiety. |
-| `files.trimTrailingWhitespace` | `true` | **Trim Trailing Whitespace.** Removes unnecessary whitespace at the end of lines when saving. Keeps git diffs clean and prevents "whitespace-only" commit pollution. Disabling leaves whitespace intact. |
+| `terminal.integrated.shellIntegration.enabled` | `false` | **Terminal Blindness Protection (Critical).** Strips VS Code escape codes so the agent can clearly read terminal outputs (error logs, etc.) without going blind. |
+| `files.autoSave` | `"onFocusChange"` | **Safe AutoSave.** Only saves when window focus changes. Prevents "Race Conditions" (hallucinations) caused by you typing while the agent is reading a file. |
+| `typescript.tsserver.experimental.enableProjectDiagnostics` | `true` | **Full Project Type Safety.** Ensures the agent can see the entire project flawlessly via LSP, even for files excluded from the Watcher. |
+| `editor.codeLens` | `false` | **Reference Counter.** Disables the "3 references" info above functions to prevent constant CPU-heavy AST analysis. |
+| `terminal.integrated.gpuAcceleration` | `"on"` | **GPU Acceleration.** Prevents UI freezing when heavy logs are flowing in the terminal. |
 
 ---
 
 ### 📊 Performance Impact Summary
 
-| Setting | Resource Usage | Gain When Disabled |
+| Setting | Resource Usage | Gain When Disabled/Enabled |
 |---------|----------------|-------------------|
-| `editor.minimap.enabled` | 🔴 High (GPU) | Noticeable in large files |
-| `editor.codeLens` | 🔴 High (CPU) | Noticeable in large projects |
-| `files.watcherExclude` | 🟠 Medium (CPU/RAM) | Critical in multi-file projects |
-| `workbench.reduceMotion` | 🟡 Low (GPU) | Noticeable on older hardware |
-| `editor.smoothScrolling` | 🟢 Minimal (GPU) | Rarely noticeable |
+| `editor.minimap.enabled` | 🔴 High (GPU) | Noticeable relief in large files |
+| `files.autoSave: onFocusChange`| 🔴 High (Intelligence)| Fundamentally resolves AI race conditions and hallucinations |
+| `files.watcherExclude` | 🟠 Medium (CPU/RAM) | Protects AI Token limit from garbage |
+| `workbench.reduceMotion` | 🟡 Low (GPU) | Accelerates UI response on older hardware |
 
+</details>
