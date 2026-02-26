@@ -1,68 +1,88 @@
 {
     // =========================================================
-    // 👑 ÇETEGPT "ULTIMATE HYBRID" CONFIG v2026 (REVISED)
-    // (Verified for Antigravity / Gemini Code Assist Agent Mode)
+    // 👑 ÇETEGPT "ULTIMATE HYBRID" CONFIG v2026 (FINAL)
+    // (Verified for Antigravity & Gemini Code Assist - Agent Mode)
     // =========================================================
-    // --- [1. ZEKA & AI: FULL POTANSİYEL] ---
-    // NOT: "antigravity.*" keyleri beta/özel sürümler içindir.
-    // Garanti olsun diye resmi "gemini.*" keyleri eklendi.
-    // [GÜNCELLEME] "Context Tracking" yerine resmi "Agent Mode" ve "Codebase Indexing" açıldı.
-    "gemini.agentMode": true, // [CRITICAL] Otonom ajan modunu açar. (Eski: antigravity.contextTracking)
-    "gemini.codebaseIndexing": true, // [CRITICAL] Tüm projeyi RAM'e indeksler. (Eski: antigravity.index)
-    "gemini.contextWindow.strategy": "slidingWindow", // [NEW] 1M token'ı verimli kullanmak için kayan pencere.
-    // Senin orijinal keylerin (Eğer özel build kullanıyorsan kalsın, yoksa etkisizdir):
-    "antigravity.index.enabled": true,
-    "antigravity.liveEmbeddings.enabled": true,
-    "antigravity.contextTracking.level": "high",
-    // [YENİ] Hata düzeltme ve Web araması için modern keyler:
-    "github.copilot.advanced.list.chat.usedReferences": true, // Alternatif zeka (Copilot kullanıyorsan)
-    "gemini.tools.webSearch": true, // [AÇIK] Google Search grounding.
-    // --- [2. GÖRSEL KONFOR: ÜRETKENLİK] ---
+
+    // ---[1. INTELLIGENCE & AGENT AUTONOMY: FULL POTENTIAL] ---
+    // Settings to prevent the agent from asking for permission like an "intern" 
+    // and to force the 1M Context window to its absolute limits.
+    
+    //[CRITICAL] Official Agent and YOLO (Full Autonomy) Settings for Gemini Code Assist
+    "geminicodeassist.agentYoloMode": true, // [ON] The agent modifies files and runs terminal commands without asking (YOLO Mode).
+    "geminicodeassist.enableCodebaseIndexing": true, // [ON] Instantly indexes the entire project into RAM.
+    "geminicodeassist.contextWindow": "1m", // Forces the 1 Million token context window.
+    
+    // Antigravity (Custom Build) Autonomy Settings:
+    "antigravity.agent.defaultConversationMode": "planning", // [PLANNING] Always plans first, never dives in blindly.
+    "antigravity.agent.terminalExecutionPolicy": "alwaysProceed", // [ON] Executes Bash scripts without asking for confirmation.
+    "antigravity.agent.reviewPolicy": "alwaysProceed", //[ON] Bypasses "Accept/Reject" UI buttons, applies changes directly.
+    "antigravity.contextTracking.level": "high", // [HIGH] Performs deep, aggressive context analysis.
+
+    // ---[2. CONSTITUTION (GEMINI.md) INTEGRATION] ---
+    // Forces the agent to read the manifesto so it doesn't act like a loose cannon.
+    "geminicodeassist.rules": "Read and strictly follow the GEMINI.md file in the root directory for all instructions, persona, and rules.",
+
+    // ---[3. TERMINAL VISION & IQ PROTECTION (CRITICAL!)] ---
+    // Prevents the agent from going "blind" when reading terminal outputs.
+    "terminal.integrated.shellIntegration.enabled": false, // [OFF] Strips VS Code escape codes so the agent can read the terminal clearly.
+    
+    // "Clean" profile to disable custom prompts that confuse the agent on Windows:
+    "terminal.integrated.profiles.windows": {
+        "AG PowerShell (clean)": {
+            "path": "powershell.exe",
+            "args":["-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass"]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "AG PowerShell (clean)",
+
+    // ---[4. TYPE SAFETY & FILE SYNCHRONIZATION] ---
+    // The "afterDelay" setting causes race conditions if you type while the agent reads.
+    "files.autoSave": "onFocusChange", // [FIXED] Only save on focus change. Ensures the agent always reads the finalized state.
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true, // [ON] Allows the agent to see the entire project flawlessly via LSP.
+
+    // ---[5. VISUAL COMFORT: PRODUCTIVITY] ---
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.guides.indentation": true,
     "editor.smoothScrolling": true,
     "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": "on", // [EKLEME] İmleç yağ gibi akar.
-    // --- [3. PERFORMANS SİGORTASI: IGNORE LIST (GENİŞLETİLMİŞ)] ---
-    // Monorepo ve Modern Stack'ler için eksikler tamamlandı.
+    "editor.cursorSmoothCaretAnimation": "on",
+
+    // ---[6. PERFORMANCE INSURANCE: IGNORE LIST] ---
+    // Prevents the agent from polluting the 1 Million token context with Node or Build garbage.
     "files.watcherExclude": {
-        // Sistem
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        // Node / Web (En büyük düşmanlar)
         "**/node_modules/**": true,
         "**/dist/**": true,
         "**/build/**": true,
         "**/.next/**": true,
         "**/.nuxt/**": true,
-        "**/.turbo/**": true, // [EKLENDI] Turborepo cache'i işlemciyi yakar, engellendi.
+        "**/.turbo/**": true,
         "**/coverage/**": true,
         "**/.cache/**": true,
-        "**/.npm/**": true, // [EKLENDI]
-        // Python / Backend
+        "**/.npm/**": true,
         "**/__pycache__/**": true,
         "**/.venv/**": true,
         "**/venv/**": true,
         "**/*.pyc": true,
-        // Mobile (Flutter/RN)
         "**/ios/Pods/**": true,
         "**/android/app/build/**": true,
         "**/.dart_tool/**": true,
         "**/flutter/bin/cache/**": true,
-        // Java / Gradle (Ajanı yavaşlatır)
         "**/.gradle/**": true,
         "**/build/classes/**": true,
-        // Derleme Çıktıları
         "**/target/**": true,
         "**/bin/**": true,
         "**/obj/**": true,
         "**/.idea/**": true,
         "**/.vscode-test/**": true
     },
-    // --- [4. ARAMA MOTORU AYARI] ---
+
+    // ---[7. SEARCH ENGINE TUNING] ---
     "search.exclude": {
         "**/node_modules": true,
         "**/dist": true,
@@ -71,15 +91,16 @@
         "**/package-lock.json": true,
         "**/pnpm-lock.yaml": true,
         "**/*.min.js": true,
-        "**/*.map": true //  Source map'leri aramada görme, kafa karıştırır.
+        "**/*.map": true // Hides source maps so the agent doesn't get confused.
     },
-    // --- [5. DİĞER İNCE AYARLAR] ---
-    "editor.codeLens": false,
-    "workbench.reduceMotion": "on",
-    "editor.minimap.enabled": false,
-    "files.autoSave": "afterDelay",
-    "files.trimTrailingWhitespace": true,
-    // [EKSTRA] Terminal Performansı
-    "terminal.integrated.gpuAcceleration": "on", // GPU varsa terminali oraya yıkar.
-    "debug.terminal.clearBeforeReusing": true // Her debug'da temiz sayfa açar.
+
+    // ---[8. OTHER TWEAKS] ---
+    "editor.codeLens": false, // Prevents constant AST analysis from eating the CPU.
+    "workbench.reduceMotion": "on", // Disables UI animations for instant editor responsiveness.
+    "editor.minimap.enabled": false, // Wastes GPU, provides zero benefit to the agent.
+    "files.trimTrailingWhitespace": true, // Keeps Git diffs clean.
+    
+    // [EXTRA] Terminal Performance
+    "terminal.integrated.gpuAcceleration": "on",
+    "debug.terminal.clearBeforeReusing": true
 }
