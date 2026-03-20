@@ -5,26 +5,32 @@
     // =========================================================
 
     // ---[1. INTELLIGENCE & AGENT AUTONOMY: FULL POTENTIAL] ---
-    // Settings to prevent the agent from asking for permission like an "intern" 
-    // and to force the 1M Context window to its absolute limits.
+    // Settings to prevent the agent from acting like a permission-seeking intern, 
+    // force the 1M Context window to its absolute limits, and eradicate MEMORY LOSS.
     
-    //[CRITICAL] Official Agent and YOLO (Full Autonomy) Settings for Gemini Code Assist
+    // [CRITICAL] Official Agent and YOLO (Full Autonomy) Settings
     "geminicodeassist.agentYoloMode": true, // [ON] The agent modifies files and runs terminal commands without asking (YOLO Mode).
     "geminicodeassist.enableCodebaseIndexing": true, // [ON] Instantly indexes the entire project into RAM.
     "geminicodeassist.contextWindow": "1m", // Forces the 1 Million token context window.
     
+    //[FIXED - AMNESIA & MEMORY DRIFT PROTECTION] 
+    // "slidingWindow" was deleting the constitution as context grew. Replaced with "compress" 
+    // to intelligently summarize and retain older context without purging it.
+    "geminicodeassist.contextWindow.strategy": "compress", 
+    "geminicodeassist.memory.pinSystemPrompt": true, // [ON] Nails the constitution to the AI's frontal lobe. It will never forget.
+    
     // Antigravity (Custom Build) Autonomy Settings:
     "antigravity.agent.defaultConversationMode": "planning", // [PLANNING] Always plans first, never dives in blindly.
     "antigravity.agent.terminalExecutionPolicy": "alwaysProceed", // [ON] Executes Bash scripts without asking for confirmation.
-    "antigravity.agent.reviewPolicy": "alwaysProceed", //[ON] Bypasses "Accept/Reject" UI buttons, applies changes directly.
+    "antigravity.agent.reviewPolicy": "alwaysProceed", // [ON] Bypasses "Accept/Reject" UI buttons, applies changes directly.
     "antigravity.contextTracking.level": "high", // [HIGH] Performs deep, aggressive context analysis.
 
     // ---[2. CONSTITUTION (GEMINI.md) INTEGRATION] ---
     // Forces the agent to read the manifesto so it doesn't act like a loose cannon.
-    "geminicodeassist.rules": "Read and strictly follow the GEMINI.md file in the root directory for all instructions, persona, and rules.",
+    "geminicodeassist.rules": "CRITICAL: Pin this to working memory. Read and strictly follow the GEMINI.md file in the root directory for all instructions, persona, and rules. Never let this context drift.",
 
     // ---[3. TERMINAL VISION & IQ PROTECTION (CRITICAL!)] ---
-    // Prevents the agent from going "blind" when reading terminal outputs.
+    // Prevents the agent from going "blind" when scraping terminal outputs.
     "terminal.integrated.shellIntegration.enabled": false, // [OFF] Strips VS Code escape codes so the agent can read the terminal clearly.
     
     // "Clean" profile to disable custom prompts that confuse the agent on Windows:
