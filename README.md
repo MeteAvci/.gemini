@@ -1,5 +1,5 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/MeteAvci/.gemini?style=for-the-badge&color=0078D6)](https://github.com/MeteAvci/.gemini/releases)
-[![MIT License](https://img.shields.io/badge/License-MIT-0078D6.svg?style=for-the-badge)](LICENSE.md)
+[![MIT License](https://img.shields.io/badge/License-MIT-0078D6.svg?style=for-the-badge)](LICENSE)
 [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://www.microsoft.com/windows)
 [![Linux](https://img.shields.io/badge/Linux-0078D6?style=for-the-badge&logo=linux&logoColor=white)](https://www.linux.org/)
 [![macOS](https://img.shields.io/badge/macOS-0078D6?style=for-the-badge&logo=apple&logoColor=white)](https://www.apple.com/macos)
@@ -16,7 +16,15 @@
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
-### 🚀 Son Güncelleme (v1.3) - "Otonomi ve Gerçeklik Protokolü (The Truth Protocol)"
+### 🚀 Son Güncelleme (v1.4) - "Kanıt Öncelikli Derin Doğrulama"
+- **Araştırma Tamamlama Kapısı:** AI artık araştırmayı birkaç link açmak olarak saymıyor. En güncel resmi dokümantasyonu bulması, varsa sürüm/tarih/release bağlamını çıkarması ve bunu canlı yerel implementasyonla karşılaştırması gerekiyor.
+- **Kaynak Öncelik Merdiveni:** Güven sırası netleştirildi: resmi dokümanlar, resmi release notes/changelog, resmi repo veya referans implementasyonlar, resmi issue/discussion kayıtları ve en son çare olarak topluluk kaynakları.
+- **Araç Esnekliği (`Tool Flexibility Protocol`):** Eski "Tools First" katılığı yumuşatıldı. Native araçlar hız, güvenlik veya doğruluk sağlıyorsa kullanılacak; aksi halde `bash` veya `pwsh` komutlarına doğrudan geçilecek.
+- **Derin İç Doğrulama (`Zero-Trust Validation`):** Final yanıttan önce, dokümantasyonun gerçekten araştırıldığı, okunduğu, yerel kodla kıyaslandığı ve zihinde sentezlendiği zorunlu bir iç doğrulama katmanı eklendi.
+- **Çatışma ve Varsayım Protokolleri:** Resmi dokümantasyon ile repo davranışı çelişirse fark açıkça isimlendirilecek. Kaçınılmaz varsayımlar etiketlenecek, kapsamı daraltılacak ve mümkünse doğrulanacak.
+- **Çıktı ve Doğrulama Sözleşmesi:** Teknik işlerde final çıktının hangi dokümantasyona dayandığını, yerel kodla nerede hizalandığını veya çatıştığını, kalan riskleri ve hangi doğrulama adımlarının çalıştırıldığını belirtmesi beklenir.
+
+### 🚀 Önceki Güncelleme (v1.3) - "Otonomi ve Gerçeklik Protokolü (The Truth Protocol)"
 - **Mental Yükseltme:** `ULTRA-PRO-MAXIMUM-OVERCLOCK MODE` ve `thinking_level: "high"` aktif edildi. `gemini-3.1-pro-preview` model sürümüne geçildi.
 - **Diyalog Senkronizasyonu (`State Synchronization`):** AI'ın salt teknik eylemlere boğulması engellendi. Kullanıcı bir soru sorduğunda veya araya girdiğinde, araç (tool) silsilesi bekletilip *önce* doğal dille yanıt verilmesi (senkronizasyon) zorunlu kılındı.
 - **Gerçeklik Protokolü (`The Truth Protocol`):** Teorik bilginin yerini anlık "canlı dosya" incelemesi (`Chronological Reconnaissance`) aldı. Yerel dosya durumu her zaman eğitim verisine üstün kılındı.
@@ -100,7 +108,7 @@ Bu ayarlar, AI'nın performansını ve teknik davranışını kontrol eder.
 -   **Nedir:** `model` ayarı.
 -   **Neden:** Gemini modelinin farklı bir sürümünü (örneğin, daha yeni, daha hızlı veya daha güçlü birini) kullanmak için.
 -   **Nasıl:** Model adını başka bir geçerli model ID'si ile değiştirin.
-    **Örnek:** `model: "gemini-3-pro-preview"`'ı `model: "gemini-next-gen-alpha"` olarak değiştirin. (Not: Platform tarafından sağlanan geçerli bir model adı kullanın).
+    **Örnek:** `model: "gemini-3.1-pro-preview"`'ı `model: "gemini-next-gen-alpha"` olarak değiştirin. (Not: Platform tarafından sağlanan geçerli bir model adı kullanın).
 
 ### **Yanıt Uzunluğu Nasıl Kontrol Edilir?**
 
@@ -111,6 +119,9 @@ Bu ayarlar, AI'nın performansını ve teknik davranışını kontrol eder.
 ### 3. Çekirdek Mantık (İleri Düzey)
 
 **Uyarı:** `<core_directives>` ve `<manifest>` bölümleri, AI'nın kendi "firmware"idir. Bunları değiştirmek öngörülemeyen davranışlara yol açabilir. Dikkatli düzenleyin.
+
+-   **Ne İşe Yarar:** Bu bölümler AI'nın araştırma önceliğini, kaynak güven sırasını, varsayım etiketleme zorunluluğunu, çatışma çözümünü, doğrulama kapılarını ve güvenlik davranışını belirler.
+-   **Nasıl Kullanılır:** Stabil kullanım için mümkünse olduğu gibi bırakın. Değiştirmeniz gerekiyorsa tek tek ve küçük adımlarla düzenleyin; özellikle `Truth > Lore`, `Zero-Trust Validation`, `Conflict Protocol` ve `Verification Gate` satırlarını değiştirirken davranışı test edin.
 
 ---
 
@@ -207,7 +218,15 @@ Bu ayarlar, AI'ın terminali okuma yeteneğini ve veri çakışmalarını yönet
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
 
-### 🚀 Latest Update (v1.3) - "Autonomy & The Truth Protocol"
+### 🚀 Latest Update (v1.4) - "Evidence-First Deep Verification"
+- **Research Completion Gate:** Research no longer means opening a couple of links. The AI must locate the latest official documentation, extract version/date/release context when available, and compare that evidence against the live local implementation.
+- **Source Priority Ladder:** The trust order is now explicit: official docs, official release notes/changelogs, official repositories or reference implementations, official issue/discussion threads for edge cases, and community sources only as a last resort.
+- **Tool Flexibility Protocol:** The old "Tools First" rigidity was softened. Native tools should be used when they improve speed, safety, or precision; if they become awkward or slower, the AI should switch to `bash` or `pwsh` without ceremony.
+- **Deep Internal Verification (`Zero-Trust Validation`):** Before producing final code or conclusions, the AI must verify that the latest documentation was actually researched, read, compared against the live codebase, and mentally synthesized into the answer.
+- **Conflict & Assumption Protocols:** If official docs and the local repo disagree, the conflict must be named explicitly. Unavoidable assumptions must be labeled, minimized, and verified whenever possible.
+- **Output & Verification Contract:** Technical final answers are now expected to state which documentation/version context was used, how it aligns or conflicts with the local codebase, what risks remain, and what verification steps were run.
+
+### 🚀 Previous Update (v1.3) - "Autonomy & The Truth Protocol"
 - **Mental Upgrade:** Activated `ULTRA-PRO-MAXIMUM-OVERCLOCK MODE` and `thinking_level: "high"`. Upgraded model target to `gemini-3.1-pro-preview`.
 - **Dialogue Synchronization (`State Synchronization`):** Calibrated the execution pipeline to the user's conversational state. When a user asks a question, the AI must prioritize natural language response before dispatching further tool operations.
 - **The Truth Protocol:** Prioritizes active local environment and chronological file statuses over assumed/training knowledge (`Chronological Reconnaissance`).
@@ -291,7 +310,7 @@ These settings control the AI's performance and technical behavior.
 -   **What:** The `model` setting under `# MODEL CONFIGURATION`.
 -   **Why:** To use a different version of the Gemini model (e.g., a newer, faster, or more powerful one).
 -   **How:** Replace the model name with another valid model ID.
-    **Example:** Change `model: "gemini-3-pro-preview"` to `model: "gemini-next-gen-alpha"`. (Note: Use a valid model name provided by the platform).
+    **Example:** Change `model: "gemini-3.1-pro-preview"` to `model: "gemini-next-gen-alpha"`. (Note: Use a valid model name provided by the platform).
 
 ### **How to Control Response Length**
 
@@ -305,8 +324,8 @@ These settings control the AI's performance and technical behavior.
 
 **Warning:** The following sections (`<core_directives>` and `<manifest>`) are the AI's firmware. Modifying them can lead to unpredictable behavior, loops, or loss of core functionality. Edit only if you understand the potential consequences.
 
--   **What They Are:** These sections define the AI's fundamental rules, like "always read documentation first" (`Truth > Lore`) and "prioritize security" (`Security > Convenience`).
--   **How to Use:** It is recommended to leave these as they are for stable operation. However, you could theoretically change `Simplicity > Complexity` to `Complexity > Simplicity` to encourage the AI to write more elaborate code, at the risk of over-engineering.
+-   **What They Are:** These sections define the AI's core rules around research-first execution, source trust order, conflict handling, assumption labeling, verification gates, and security behavior.
+-   **How to Use:** For stable operation, it is recommended to leave them mostly intact. If you edit them, change one rule at a time and validate behavior carefully, especially around `Truth > Lore`, `Zero-Trust Validation`, `Conflict Protocol`, and `Verification Gate`.
 
 ---
 
