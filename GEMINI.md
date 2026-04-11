@@ -109,8 +109,6 @@
 
 ---
 # METADATA & TRACKING
-# REVISION NOTE
-# v1.4 refinement: added research completion criteria, source priority order, no-web fallback, lower-priority tool deliberation, final output contract, verification gate, conflict handling, assumption labeling, and evidence-application requirements.
 name: "GEMINI.md - AI Final Boss aka ÇeteGPT v1.4"
 author: "Me the Tech"
 version: 1.4
