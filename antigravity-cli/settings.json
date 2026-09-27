@@ -1,0 +1,69 @@
+{
+  // =========================================================================
+  // Google Antigravity CLI (agy) Configuration
+  // Location: ~/.gemini/antigravity-cli/settings.json
+  // Bounded Execution & Unified Sandbox Permissions
+  // =========================================================================
+
+  "toolPermission": "proceed-in-sandbox",
+  "artifactReviewPolicy": "agent-decides",
+  "enableTerminalSandbox": true,
+  "allowNonWorkspaceAccess": false,
+
+  "verbosity": "medium",
+  "notifications": true,
+  "showTips": false,
+  "showFeedbackSurvey": false,
+
+  "permissions": {
+    "allow": [
+      "command(git status)",
+      "command(git diff)",
+      "command(git log)",
+      "command(git show)",
+      "command(git rev-parse)",
+      "command(git branch)",
+      "command(rg)",
+      "command(pytest)",
+      "command(python -m pytest)",
+      "command(python3 -m pytest)",
+      "command(python -m unittest)",
+      "command(python3 -m unittest)",
+      "command(npm test)",
+      "command(npm run test)",
+      "command(npm run lint)",
+      "command(npm run typecheck)",
+      "command(pnpm test)",
+      "command(cargo test)",
+      "command(cargo check)"
+    ],
+
+    "ask": [
+      "command(npm install)",
+      "command(npm add)",
+      "command(pnpm install)",
+      "command(pnpm add)",
+      "command(yarn add)",
+      "command(pip install)",
+      "command(pip3 install)",
+      "command(cargo add)",
+      "read_url(*)",
+      "execute_url(*)"
+    ],
+
+    "deny": [
+      "command(git reset --hard)",
+      "command(git clean -fdx)",
+      "command(git push --force)",
+      "command(rm -rf)",
+      "command(del /f)",
+      "command(sudo)",
+      "command(su )",
+      "command(powershell -ExecutionPolicy Bypass)",
+      "command(pwsh -ExecutionPolicy Bypass)",
+      "write_file(~/.ssh/)",
+      "write_file(~/.aws/)",
+      "write_file(~/.gnupg/)"
+    ]
+  }
+}

@@ -16,14 +16,16 @@
 # Gemini CLI & Google Antigravity için .gemini Yapılandırma Rehberi
 ### *Modüler Egemen Ajan Mimarisi, Sınırlı Otonomi (Bounded Execution) ve Doğruluk Protokolü*
 
-Bu repository, kişisel AI aracımın yapılandırma, anayasa ve modüler kural merkezidir. **Google Antigravity platformu** ve **Gemini CLI** motoru için özel olarak hazırlanmış olup, her yazılımcının doğrudan kendi ortamına kopyalayabileceği evrensel ve modern standartlara sahiptir.
+Bu repository, kişisel AI aracımın yapılandırma, anayasa ve modüler kural merkezidir. **Google Antigravity platformu (Antigravity 2.0 / CLI 1.x / IDE)** ve **Gemini CLI** motoru için özel olarak hazırlanmış olup, her yazılımcının doğrudan kendi ortamına kopyalayabileceği evrensel ve modern standartlara sahiptir.
 
 ---
 
 ### 🚀 Son Güncelleme (v2.0) - "Sovereign Agent & Bounded Runtime"
 
-- **Modüler Dizin Mimarisi (`rules/`, `policies/`, `editor/`):** Tüm kurallar ve yapılandırmalar tek bir monolitik dosyada sıkışıp kalmak yerine mantıksal etki alanlarına bölündü:
-  - `rules/`: Canlı gerçeklik, atomik dosya yazımı, modüler mimari, karşı istihbarat ve kod kalitesi alt-kuralları.
+- **Modüler Dizin Mimarisi (`rules/`, `.agents/rules/`, `policies/`, `editor/`, `antigravity-cli/`):** Tüm kurallar ve yapılandırmalar tek bir monolitik dosyada sıkışıp kalmak yerine mantıksal etki alanlarına bölündü:
+  - `.agents/rules/`: Google Antigravity IDE ve Antigravity 2.0'ın otomatik olarak keşfedip hiyerarşik bağlama dahil ettiği kural dosyaları.
+  - `rules/`: Canlı gerçeklik, atomik dosya yazımı, modüler mimari, karşı istihbarat ve kod kalitesi evrensel kuralları.
+  - `antigravity-cli/`: Antigravity CLI (`agy`) için optimize edilmiş sandbox ve izin matrisi (`settings.json`).
   - `policies/`: Gemini CLI'ın resmi kural motoru için hazırlanmış `security.toml` izin şablonu.
   - `editor/`: Editör performans ayarlarını CLI çalışma zamanı ayarlarından ayrıştıran `settings.jsonc`.
 - **Model ve Dinamik Akıl Yürütme:** Varsayılan model `Gemini 3.8 Flash (High)` dinamik akıl yürütme motoruyla hizalandı. "Model ID Anayasa Değildir" ilkesiyle anayasa, model adından bağımsız bir yetenek rotalama yapısına (Capability Routing) kavuşturuldu.
@@ -40,13 +42,24 @@ Bu repository, kişisel AI aracımın yapılandırma, anayasa ve modüler kural 
 ```text
 .gemini/
 ├── GEMINI.md                   # ÇeteGPT v2.0 Sistem Anayasası & Karakter Talimatları
-├── settings.json               # Antigravity & Gemini CLI çalışma alanı ve çalışma zamanı ayarları
+├── settings.json               # Gemini CLI v2 çalışma alanı ve model ayarları
 ├── .geminiignore               # LLM bağlamını çöplerden koruyan akıllı yoksayma listesi
 ├── .gitignore                  # Git versiyon kontrol istisnaları
-├── README.md                   # Detaylı mimari ve kurulum rehberi
+├── README.md                   # Detaylı mimari ve kurulum rehberi (TR / EN)
 ├── LICENSE                     # MIT Açık Kaynak Lisansı
 │
-├── rules/                      # Modüler Kural ve Protokol Kitaplığı
+├── antigravity-cli/            # Google Antigravity CLI Yapılandırması
+│   └── settings.json           # Antigravity CLI v2 sandbox ve izin matrisi (allow/ask/deny)
+│
+├── .agents/                    # Antigravity IDE / 2.0 Otomatik Kural Keşfi
+│   └── rules/                  # Antigravity motorunun otomatik tanıdığı kural dizini
+│       ├── truth-protocol.md
+│       ├── safe-write.md
+│       ├── modular-architecture.md
+│       ├── counter-intelligence.md
+│       └── code-quality.md
+│
+├── rules/                      # Genel / Bağımsız Modüler Kural Kitaplığı
 │   ├── truth-protocol.md       # Gerçeklik önceliği, kaynak merdiveni ve araştırma kapısı
 │   ├── safe-write.md           # Güvenli atomik dosya yazma protokolü (Read-Transform-Write)
 │   ├── modular-architecture.md # Domain-driven modüler mimari kuralları
@@ -67,7 +80,7 @@ Bu repository, kişisel AI aracımın yapılandırma, anayasa ve modüler kural 
 *   **Windows:**
     1.  `Win + R` tuşlarına basın, `%USERPROFILE%` yazın ve Enter'a basın.
     2.  Mevcut değilse `.gemini` adında bir klasör oluşturun.
-    3.  Repo içerisindeki tüm dosyaları (`GEMINI.md`, `settings.json`, `.geminiignore`, `rules/`, `policies/`, `editor/`) `%USERPROFILE%\.gemini\` klasörüne kopyalayın.
+    3.  Repo içerisindeki tüm dosyaları (`GEMINI.md`, `settings.json`, `.geminiignore`, `antigravity-cli/`, `.agents/`, `rules/`, `policies/`, `editor/`) `%USERPROFILE%\.gemini\` klasörüne kopyalayın.
     4.  Antigravity IDE veya Gemini CLI oturumunuzu yeniden başlatın.
 
 *   **macOS / Linux:**
@@ -78,30 +91,23 @@ Bu repository, kişisel AI aracımın yapılandırma, anayasa ve modüler kural 
 
 ---
 
-### 🧠 Ayarlar Rehberi (`settings.json`)
+### 🧠 Ayarlar Rehberi
 
-#### 1. Zeka ve Model Ayarları
+#### 1. Gemini CLI (`settings.json`)
 | Ayar | Değer | Açıklama |
 |---|---|---|
 | `model.name` | `"Gemini 3.8 Flash (High)"` | Yüksek akıl yürütme ve geniş bağlam sunan aktif model. |
 | `model.thinkingLevel` | `"high"` | Karmaşık mimari analizler için dinamik düşünme modu. |
 | `model.compressionThreshold` | `0.7` | Bağlamın %70'ine ulaşılana kadar erken sıkıştırmayı önler. |
-
-#### 2. Güvenlik ve Sınırlı Otonomi
-| Ayar | Değer | Açıklama |
-|---|---|---|
 | `security.toolSandboxing` | `true` | Terminal araçlarını korumalı sandbox içinde çalıştırır. |
 | `security.disableYoloMode` | `true` | Kontrolsüz kör çalıştırmayı engeller, sınırları belirler. |
-| `general.defaultApprovalMode` | `"default"` | Güvenli araçlara otomatik izin verir, riskli eylemleri denetler. |
 
-#### 3. Terminal ve Editör Performansı
+#### 2. Antigravity CLI (`antigravity-cli/settings.json`)
 | Ayar | Değer | Açıklama |
 |---|---|---|
-| `terminal.integrated.shellIntegration.enabled` | `true` | Editör terminal entegrasyonu. |
-| `terminal.integrated.profiles.windows` | `pwsh -NoLogo -NoProfile` | Windows terminalinde escape kodlarının ajanı kör etmesini önler. |
-| `files.autoSave` | `"onFocusChange"` | Ajan dosya okurken kullanıcının yazmasından doğan çakışmaları (race condition) engeller. |
-| `typescript.tsserver.experimental.enableProjectDiagnostics` | `true` | Tüm projenin LSP üzerinden tip güvenliğini sağlar. |
-| `editor.minimap.enabled` | `false` | GPU yükünü azaltır, kod okuma alanını genişletir. |
+| `toolPermission` | `"proceed-in-sandbox"` | Sandbox içi komutları otomatik onaylar, dışındakiler için izin ister. |
+| `permissions.allow` | `git status, pytest, npm test, rg...` | Otomatik izin verilen güvenli gözlem ve test araçları. |
+| `permissions.deny` | `rm -rf, sudo, git reset --hard...` | Engellenen tehlikeli ve yıkıcı sistem komutları. |
 
 </details>
 
@@ -109,13 +115,15 @@ Bu repository, kişisel AI aracımın yapılandırma, anayasa ve modüler kural 
 
 ## Architecture Overview (English)
 
-This repository serves as the universal configuration and constitutional core for my personal AI engineering setup. Built specifically for **Google Antigravity** and the **Gemini CLI** engine, it establishes an evidence-backed, modular, high-performance runtime accessible to any developer.
+This repository serves as the universal configuration and constitutional core for my personal AI engineering setup. Built specifically for **Google Antigravity (Antigravity 2.0 / CLI 1.x / IDE)** and the **Gemini CLI** engine, it establishes an evidence-backed, modular, high-performance runtime accessible to any developer.
 
 ### 🚀 Highlights of v2.0
 
-1. **Modular Architecture (`rules/`, `policies/`, `editor/`):**
+1. **Modular Architecture (`.agents/rules/`, `rules/`, `policies/`, `editor/`, `antigravity-cli/`):**
    Decouples rules, security policies, and editor preferences into dedicated, maintainable domains:
+   - `.agents/rules/`: Natively discovered by Google Antigravity IDE and Antigravity 2.0 hierarchical rule traversal.
    - `rules/`: Detailed standalone guides for the Truth Protocol, Safe Write, Modular Architecture, Counter-Intelligence, and Verification Gates.
+   - `antigravity-cli/`: Dedicated settings file (`antigravity-cli/settings.json`) for the Antigravity CLI (`agy`) permissions engine.
    - `policies/`: Ready-to-deploy `security.toml` template for Gemini CLI's native command policy engine.
    - `editor/`: Decoupled `settings.jsonc` providing optimal VS Code and Antigravity IDE performance without polluting the CLI runtime config.
 
@@ -144,13 +152,24 @@ This repository serves as the universal configuration and constitutional core fo
 ```text
 .gemini/
 ├── GEMINI.md                   # ÇeteGPT v2.0 System Constitution & Persona Directives
-├── settings.json               # Optimized runtime & workspace settings for Gemini CLI & Antigravity
+├── settings.json               # Optimized runtime & workspace settings for Gemini CLI
 ├── .geminiignore               # Context hygiene filter to protect LLM context from build noise
 ├── .gitignore                  # Git tracking exclusions
 ├── README.md                   # Comprehensive documentation and setup guide
 ├── LICENSE                     # MIT Open Source License
 │
-├── rules/                      # Modular Protocol Library
+├── antigravity-cli/            # Google Antigravity CLI Configuration
+│   └── settings.json           # Antigravity CLI permissions & sandbox policy
+│
+├── .agents/                    # Antigravity IDE / 2.0 Native Rule Discovery
+│   └── rules/                  # Auto-loaded by Antigravity's hierarchical engine
+│       ├── truth-protocol.md
+│       ├── safe-write.md
+│       ├── modular-architecture.md
+│       ├── counter-intelligence.md
+│       └── code-quality.md
+│
+├── rules/                      # Modular Protocol Library (Universal)
 │   ├── truth-protocol.md       # Live reality, source ladder & research completion gates
 │   ├── safe-write.md           # Atomic Read-Transform-Write data integrity standard
 │   ├── modular-architecture.md # Domain-driven structure & separation of concerns
@@ -171,7 +190,7 @@ This repository serves as the universal configuration and constitutional core fo
 *   **Windows:**
     1.  Press `Win + R`, type `%USERPROFILE%`, and press Enter.
     2.  Create a folder named `.gemini` if it doesn't already exist.
-    3.  Copy all files and folders (`GEMINI.md`, `settings.json`, `.geminiignore`, `rules/`, `policies/`, `editor/`) into `%USERPROFILE%\.gemini\`.
+    3.  Copy all files and folders (`GEMINI.md`, `settings.json`, `.geminiignore`, `antigravity-cli/`, `.agents/`, `rules/`, `policies/`, `editor/`) into `%USERPROFILE%\.gemini\`.
     4.  Restart your Antigravity IDE or Gemini CLI session.
 
 *   **macOS / Linux:**
@@ -179,33 +198,6 @@ This repository serves as the universal configuration and constitutional core fo
     git clone https://github.com/MeteAvci/.gemini.git ~/.gemini
     # or copy the files directly into your ~/.gemini folder
     ```
-
----
-
-### 🧠 Settings Reference (`settings.json`)
-
-#### 1. Intelligence & Model
-| Setting | Value | Description |
-|---|---|---|
-| `model.name` | `"Gemini 3.8 Flash (High)"` | Primary model combining high throughput and deep reasoning. |
-| `model.thinkingLevel` | `"high"` | Dynamic reasoning enabled for complex architectural tasks. |
-| `model.compressionThreshold` | `0.7` | Delays aggressive compaction until context reaches 70% capacity. |
-
-#### 2. Security & Bounded Autonomy
-| Setting | Value | Description |
-|---|---|---|
-| `security.toolSandboxing` | `true` | Executes terminal commands within contained sandbox perimeters. |
-| `security.disableYoloMode` | `true` | Enforces governed autonomy and prevents blind unchecked mutations. |
-| `general.defaultApprovalMode` | `"default"` | Auto-approves safe actions while gating risky operations. |
-
-#### 3. Terminal & Editor Performance
-| Setting | Value | Description |
-|---|---|---|
-| `terminal.integrated.shellIntegration.enabled` | `true` | Clean editor terminal integration. |
-| `terminal.integrated.profiles.windows` | `pwsh -NoLogo -NoProfile` | Strips Windows prompt decorations to prevent scraper errors. |
-| `files.autoSave` | `"onFocusChange"` | Prevents file read/write race conditions while the agent is editing. |
-| `typescript.tsserver.experimental.enableProjectDiagnostics` | `true` | Full project LSP diagnostics across all files. |
-| `editor.minimap.enabled` | `false` | Conserves GPU resources and maximizes code reading space. |
 
 ---
 
