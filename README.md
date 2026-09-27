@@ -6,17 +6,10 @@
 [![Google Antigravity](https://img.shields.io/badge/Google%20Antigravity-0078D6?style=for-the-badge&logo=google&logoColor=white)](https://github.com/google)
 [![Google Gemini](https://img.shields.io/badge/Google%20Gemini%203.8-0078D6?style=for-the-badge&logo=googlegemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
 
-# Gemini CLI ve Antigravity için .gemini v2.0 Yapılandırması
+# Gemini CLI ve Google Antigravity için .gemini Yapılandırması (v2.0)
+### Modüler Egemen Ajan Mimarisi, Sınırlandırılmış Otonomi ve Doğruluk Protokolü
 
-<details>
-<summary>🇹🇷 Türkçe Dokümantasyon için tıklayın!</summary>
-
----
-
-# Gemini CLI ve Google Antigravity için .gemini Yapılandırma Rehberi
-### *Modüler Egemen Ajan Mimarisi, Sınırlandırılmış Otonomi ve Doğruluk Protokolü*
-
-Bu depo, yapay zeka araçlarımın yapılandırma, anayasa ve kural merkezidir. **Google Antigravity platformu (Antigravity 2.0, Antigravity CLI, Antigravity IDE)** ve **Gemini CLI** motoru için hazırlanmış olup, her yazılımcının doğrudan kendi projelerinde kullanabileceği evrensel standartlara sahiptir.
+Bu depo, yapay zeka araçlarımın yapılandırma, anayasa ve kural merkezidir. **Google Antigravity platformu (Antigravity 2.0, Antigravity CLI, Antigravity IDE)** ve **Gemini CLI** motoru için optimize edilmiş olup, her yazılımcının doğrudan kendi projelerinde kullanabileceği evrensel ve üretime hazır standartlara sahiptir.
 
 ---
 
@@ -26,12 +19,12 @@ Bu depo, yapay zeka araçlarımın yapılandırma, anayasa ve kural merkezidir. 
   * `.agents/rules/`: Google Antigravity IDE ve Antigravity 2.0 tarafından otomatik keşfedilen yerel kural dizini.
   * `rules/`: Canlı gerçeklik, atomik dosya yazımı, modüler mimari, karşı istihbarat ve kod kalitesi evrensel kuralları.
   * `antigravity-cli/`: Antigravity CLI terminal aracı için optimize edilmiş sandbox ve izin matrisi (`settings.json`).
-  * `policies/`: Gemini CLI'ın resmi kural motoru için hazırlanmış `security.toml` izin şablonu.
+  * `policies/`: Gemini CLI resmi kural motoru için hazırlanmış `security.toml` izin şablonu.
   * `editor/`: Editör performans ayarlarını CLI çalışma zamanı ayarlarından ayrıştıran `settings.jsonc`.
 * **Model ve Dinamik Akıl Yürütme:** Varsayılan model `Gemini 3.8 Flash (High)` dinamik akıl yürütme motoruyla hizalandı. Anayasa sabit model adından bağımsızlaştırılarak yetenek rotalama yapısına kavuşturuldu.
 * **Bağlam Doktrini (1 Milyon Token Kapasitedir, Çöplük Değil):** 1.000.000 tokenlik pencereyi ham sohbet geçmişiyle şişirip modeli amneziye uğratmak yerine; sistem anayasası, araç şemaları ve proje haritası Google Context Caching (TTL) önekine alındı. Her turda yalnızca odaklanılmış canlı görev ve kanıtlar taşınır.
 * **Sınırlandırılmış Yürütme (Kontrolsüz YOLO Modunun Sonu):** Antik ve kontrolsüz YOLO modu (`agentYoloMode: true`) emekliye ayrıldı. Yerine `disableYoloMode: true` ile Antigravity Sandbox (`proceed-in-sandbox`) entegrasyonu getirilerek hem otonom hem de sınırları korumalı güvenli çalışma disiplini kuruldu.
-* **İddia Kanıt Değildir (`Claim ≠ Proof`):** Modelin metin olarak "testler geçti" demesi iddiadır; terminal çıkış kodu 0, temiz linter çıktıları ve başarıyla tamamlanan test suite'leri kanıttır.
+* **İddia Kanıt Değildir (`Claim ≠ Proof`):** Modelin metin olarak "testler geçti" demesi iddiadır; terminal çıkış kodu 0, temiz linter çıktıları ve başarıyla tamamlanan test paketleri kanıttır.
 * **Temiz PowerShell 7:** Windows terminalinde kaçış kodlarının ve özel prompt süslemelerinin ajanı kör etmesini engelleyen `-NoLogo -NoProfile` temiz profil standardı getirildi (`pwsh`).
 * **Akıllı Bağlam Filtresi (`.geminiignore`):** `node_modules`, `dist`, `coverage`, cache gibi token israfı yaratan klasörleri izole eden, ancak `package-lock.json` ve `pnpm-lock.yaml` gibi bağımlılık kilitlerini kanıt olarak koruyan filtre eklendi.
 
@@ -121,15 +114,19 @@ Bu depo, yapay zeka araçlarımın yapılandırma, anayasa ve kural merkezidir. 
 * `files.autoSave: "onFocusChange"`: Pencere odağı değiştiğinde kaydeder; model dosya okurken kullanıcının yazmasından doğan yarış durumlarını (race condition) ve halüsinasyonları engeller.
 * `typescript.tsserver.experimental.enableProjectDiagnostics`: `true` (Tüm projenin LSP üzerinden tip güvenliğini sağlar).
 * `files.watcherExclude`: Node modülleri, derleme çıktıları, sanal ortamlar ve geçici önbellekleri hariç tutarak CPU ve RAM yükünü düşürür.
-* `search.exclude`: Arama sonuçlarını kirleten minify edilmiş dosyaları ve kaynak haritalarını eler; lockfile'ları kanıt olarak aramada tutar.
-
-</details>
+* `search.exclude`: Arama sonuçlarını kirleten derlenmiş dosyaları ve kaynak haritalarını eler; lockfile dosyalarını kanıt olarak aramada tutar.
 
 ---
 
-# .gemini Configuration for Gemini CLI & Google Antigravity
+<details>
+<summary><b>🇬🇧 English Documentation (Click to expand)</b></summary>
 
-This repository hosts the configuration, constitution, and modular rule library for my personal AI assistant. Specifically engineered for the **Google Antigravity platform (Antigravity 2.0, Antigravity CLI, Antigravity IDE)** and the **Gemini CLI** engine, it establishes an evidence-backed, modular, high-performance runtime accessible to any developer.
+<br>
+
+# .gemini Configuration for Gemini CLI & Google Antigravity
+### Modular Sovereign Agent Architecture, Bounded Autonomy & Truth Protocol
+
+This repository hosts the configuration, constitution, and modular rule library for AI development environments. Specifically engineered for the **Google Antigravity platform (Antigravity 2.0, Antigravity CLI, Antigravity IDE)** and the **Gemini CLI** engine, it establishes an evidence-backed, modular, high-performance runtime accessible to any developer.
 
 ---
 
@@ -139,11 +136,11 @@ This repository hosts the configuration, constitution, and modular rule library 
   * `.agents/rules/`: Automatically discovered by Google Antigravity IDE and Antigravity 2.0 hierarchical rule traversal.
   * `rules/`: Detailed standalone guides for the Truth Protocol, Safe Write, Modular Architecture, Counter-Intelligence, and Verification Gates.
   * `antigravity-cli/`: Dedicated settings file (`antigravity-cli/settings.json`) for the Antigravity CLI (`agy`) permissions and sandbox engine.
-  * `policies/`: Ready-to-deploy `security.toml` template for Gemini CLI's native command policy engine.
+  * `policies/`: Ready-to-deploy `security.toml` template for Gemini CLI native command policy engine.
   * `editor/`: Decoupled `settings.jsonc` providing optimal VS Code and Antigravity IDE performance without polluting the CLI runtime config.
-* **Model & Dynamic Reasoning:** Anchored to `Gemini 3.8 Flash (High)`. Under the "Model ID is Not Constitution" principle, operational rules govern capability profiles and reasoning effort rather than tying behavior to a single fleeting model name.
+* **Model & Dynamic Reasoning:** Anchored to `Gemini 3.8 Flash (High)`. Under the "Model ID is Not Constitution" principle, operational rules govern capability profiles and reasoning effort rather than tying behavior to a single model name.
 * **Context Doctrine (1,000,000 Tokens Capacity is Not a Target to Stuff):** A 1M token context window is capacity, not a dumping ground. Monolithic context stuffing causes Lost-in-the-Middle amnesia. System rules and repository structure are cached at the prefix via Google Context Caching (TTL-based), while active turns carry only focused objectives and concrete evidence.
-* **Bounded Execution (Retiring YOLO):** Unconstrained `agentYoloMode: true` is deprecated. In its place sits a governed autonomy model: `disableYoloMode: true` combined with Antigravity's `proceed-in-sandbox` architecture for reliable, safe execution.
+* **Bounded Execution (Retiring YOLO):** Unconstrained `agentYoloMode: true` is deprecated. In its place sits a governed autonomy model: `disableYoloMode: true` combined with Antigravity `proceed-in-sandbox` architecture for reliable, safe execution.
 * **Claim is Not Proof (`Claim ≠ Proof`):** A prose claim that code works is not proof. Only machine-observable receipts (exit code 0, passing test suites, clean type checks) constitute proof.
 * **Clean PowerShell 7 Environment:** Configured `pwsh -NoLogo -NoProfile` on Windows to eliminate custom prompt artifacts and ANSI escape sequences that blind AI scrapers.
 * **Intelligent Context Hygiene (`.geminiignore`):** Isolates noisy build artifacts, virtual environments, and caches while explicitly protecting dependency lockfiles (`package-lock.json`, `pnpm-lock.yaml`) as immutable evidence.
@@ -165,7 +162,7 @@ This repository hosts the configuration, constitution, and modular rule library 
 │   └── settings.json           # Antigravity CLI permissions & sandbox policy
 │
 ├── .agents/                    # Antigravity IDE & 2.0 Native Rule Discovery
-│   └── rules/                  # Auto-loaded by Antigravity's hierarchical engine
+│   └── rules/                  # Auto-loaded by Antigravity hierarchical engine
 │       ├── truth-protocol.md
 │       ├── safe-write.md
 │       ├── modular-architecture.md
@@ -241,3 +238,5 @@ You can use `GEMINI.md` and `settings.json` as the control panel for your AI ass
 ### 📜 License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for details.
+
+</details>
