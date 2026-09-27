@@ -1,4 +1,20 @@
 {
+  // =========================================================================
+  // 👑 ÇETEGPT "SOVEREIGN AGENT" CONFIG v2.0 (2026)
+  // Public Configuration for Google Antigravity & Gemini CLI
+  // Optimized for Gemini 3.8 Flash (High) & Modern AI Agent Workflows
+  // =========================================================================
+
+  // ---[1. INTELLIGENCE & MODEL ARCHITECTURE] ---
+  "model": {
+    "name": "Gemini 3.8 Flash (High)",
+    "thinkingLevel": "high",
+    "compressionThreshold": 0.7,
+    "maxSessionTurns": 128,
+    "disableLoopDetection": false
+  },
+
+  // ---[2. AGENT RUNTIME & BOUNDED EXECUTION (REPLACING UNGOVERNED YOLO)] ---
   "general": {
     "defaultApprovalMode": "default",
     "enableAutoUpdate": true,
@@ -17,12 +33,21 @@
     "logRagSnippets": false
   },
 
-  "model": {
-    "maxSessionTurns": 128,
-    "compressionThreshold": 0.7,
-    "disableLoopDetection": false
+  "security": {
+    "toolSandboxing": true,
+    "disableYoloMode": true,
+    "disableAlwaysAllow": true,
+    "enablePermanentToolApproval": false,
+    "folderTrust": {
+      "enabled": true
+    },
+    "environmentVariableRedaction": {
+      "enabled": true,
+      "allowed": []
+    }
   },
 
+  // ---[3. CONTEXT DOCTRINE & HYGIENE (1M TOKENS ≠ 1M TO STUFF)] ---
   "context": {
     "discoveryMaxDirs": 200,
     "loadMemoryFromIncludeDirectories": false,
@@ -33,29 +58,15 @@
     }
   },
 
+  // ---[4. GOVERNED TOOL SURFACE] ---
   "tools": {
     "sandboxAllowedPaths": [],
     "sandboxNetworkAccess": false,
     "useRipgrep": true,
-    "truncateToolOutputThreshold": 30000,
+    "truncateToolOutputThreshold": 32768,
     "shell": {
       "enableInteractiveShell": false,
       "showColor": false
-    }
-  },
-
-  "security": {
-    "toolSandboxing": true,
-    "disableYoloMode": true,
-    "disableAlwaysAllow": true,
-    "enablePermanentToolApproval": false,
-    "autoAddToPolicyByDefault": false,
-    "folderTrust": {
-      "enabled": true
-    },
-    "environmentVariableRedaction": {
-      "enabled": true,
-      "allowed": []
     }
   },
 
@@ -64,28 +75,83 @@
     "ignoreLocalEnv": false
   },
 
-  "mcpServers": {
-    "gdp": {
-      "command": "gdp",
+  // ---[5. TERMINAL & POWERSHELL CLEAN ENVIRONMENT] ---
+  // Prevents the agent from going blind or choking on custom prompts and ANSI escape sequences
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.gpuAcceleration": "auto",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (Clean)": {
+      "path": "pwsh.exe",
       "args": [
-        "mcp-stdio"
-      ],
-      "env": {
-        "PYTHONIOENCODING": "utf-8",
-        "PYTHONUTF8": "1"
-      }
-    },
-
-    "gdp-global": {
-      "command": "gdp",
-      "args": [
-        "mcp-stdio",
-        "--gateway"
-      ],
-      "env": {
-        "PYTHONIOENCODING": "utf-8",
-        "PYTHONUTF8": "1"
-      }
+        "-NoLogo",
+        "-NoProfile"
+      ]
     }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (Clean)",
+
+  // ---[6. FILE INTEGRITY & TYPE SAFETY] ---
+  // "onFocusChange" prevents race conditions caused by typing while the agent is reading
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+
+  // ---[7. LOW-NOISE UI & PERFORMANCE TUNING] ---
+  "editor.minimap.enabled": false,
+  "editor.codeLens": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": true,
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "workbench.reduceMotion": "on",
+
+  // ---[8. FILE WATCHER EXCLUSIONS (PREVENT CPU & CONTEXT BLOAT)] ---
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules/**": true,
+    "**/.pnpm-store/**": true,
+    "**/.yarn/cache/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/.turbo/**": true,
+    "**/.cache/**": true,
+    "**/.npm/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.ruff_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/*.pyc": true,
+    "**/target/**": true,
+    "**/bin/**": true,
+    "**/obj/**": true,
+    "**/.idea/**": true,
+    "**/.vscode-test/**": true
+  },
+
+  // ---[9. SEARCH EXCLUSIONS (KEEP EVIDENCE ACCESSIBLE)] ---
+  // Note: lockfiles intentionally remain searchable as evidence.
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.pnpm-store": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.next": true,
+    "**/.nuxt": true,
+    "**/.turbo": true,
+    "**/*.min.js": true,
+    "**/*.min.css": true,
+    "**/*.map": true
   }
 }

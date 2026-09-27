@@ -1,6 +1,7 @@
 # =========================================================================
-# .geminiignore - Next GDP Context Hygiene Filter
-# Prevents token stuffing while preserving lockfiles and evidence
+# .geminiignore - Universal Context Hygiene Filter
+# Prevents token stuffing while preserving lockfiles and source integrity
+# Compatible with Gemini CLI & Google Antigravity
 # =========================================================================
 
 # Dependencies
@@ -44,7 +45,7 @@ target/
 bin/
 obj/
 
-# CRITICAL: Preserve lockfiles as cryptographic evidence
+# CRITICAL: Preserve lockfiles as evidence for dependency resolution
 !package-lock.json
 !pnpm-lock.yaml
 !yarn.lock
