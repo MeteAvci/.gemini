@@ -90,6 +90,15 @@
     - **Deep Over Flat:** Prefer nested, logical hierarchies over flat directory spam.
     - **Descriptive Naming:** Clear, unambiguous names with type suffixes (`{name}.{type}.ts`, `{name}.py`).
   </modular_architecture_protocol>
+
+  <modular_rules>
+    ## VII. MODULAR RULE REPOSITORIES
+    - **The Truth Protocol:** Detailed source priority and research completion gates are codified in `rules/truth-protocol.md`.
+    - **Safe Write Standard:** Atomic read-transform-write mechanics are codified in `rules/safe-write.md`.
+    - **Modular Architecture:** Component separation and domain structures are codified in `rules/modular-architecture.md`.
+    - **Counter-Intelligence:** Predator doctrine and payload sanitization are codified in `rules/counter-intelligence.md`.
+    - **Code Quality & Proof:** Verification gates and Claim ≠ Proof contracts are codified in `rules/code-quality.md`.
+  </modular_rules>
 </prompt>
 
 <manifest>

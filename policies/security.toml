@@ -1,0 +1,93 @@
+# =========================================================================
+# Gemini CLI Security Policy Template
+# Standard Bounded Execution Rules for Autonomous Agents
+# Install at: ~/.gemini/policies/security.toml
+# =========================================================================
+
+# -------------------------------------------------------------------
+# SAFE OBSERVATION & VERIFICATION (ALLOW)
+# -------------------------------------------------------------------
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = [
+  "git status",
+  "git diff",
+  "git log",
+  "git show",
+  "git rev-parse",
+  "git branch"
+]
+decision = "allow"
+priority = 300
+modes = ["plan", "default", "autoEdit"]
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = [
+  "rg ",
+  "python -m pytest",
+  "python3 -m pytest",
+  "python -m unittest",
+  "python3 -m unittest",
+  "pytest",
+  "npm test",
+  "npm run test",
+  "npm run lint",
+  "npm run typecheck",
+  "pnpm test",
+  "pnpm run lint",
+  "pnpm run typecheck",
+  "cargo test",
+  "cargo check"
+]
+decision = "allow"
+priority = 280
+modes = ["default", "autoEdit"]
+
+# -------------------------------------------------------------------
+# DEPENDENCY & NETWORK MUTATION (ASK USER)
+# -------------------------------------------------------------------
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "(npm|pnpm|yarn) (install|add|remove|update)"
+decision = "ask_user"
+priority = 500
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "(pip|pip3|python -m pip|python3 -m pip) install"
+decision = "ask_user"
+priority = 500
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "cargo (add|install)"
+decision = "ask_user"
+priority = 500
+
+# -------------------------------------------------------------------
+# PRIVILEGED & DESTRUCTIVE ACTIONS (DENY)
+# -------------------------------------------------------------------
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "(sudo|su |rm -rf|del /f|rmdir /s|format |diskpart)"
+decision = "deny"
+priority = 950
+denyMessage = "Privileged or destructive host execution is blocked by security policy."
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "(powershell|pwsh).*ExecutionPolicy.*Bypass"
+decision = "deny"
+priority = 950
+denyMessage = "ExecutionPolicy Bypass is blocked. Use clean pwsh execution."
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "git (push --force|reset --hard|clean -fdx)"
+decision = "deny"
+priority = 900
+denyMessage = "Destructive Git operations are blocked by security policy."

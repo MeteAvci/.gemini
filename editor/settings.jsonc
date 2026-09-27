@@ -1,0 +1,112 @@
+// =========================================================================
+// VS Code & Antigravity IDE Editor Performance Settings
+// Recommended location: .vscode/settings.json or global IDE settings
+// Decoupled from Gemini CLI runtime configuration
+// =========================================================================
+{
+  // ---------------------------------------------------------------
+  // Terminal: Clean PowerShell 7 (Windows)
+  // Strips custom prompt decorations and ANSI escape sequences that
+  // interfere with AI terminal scrapers.
+  // ---------------------------------------------------------------
+  "terminal.integrated.profiles.windows": {
+    "PowerShell 7 (Clean)": {
+      "path": "pwsh.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell 7 (Clean)",
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.gpuAcceleration": "auto",
+
+  // ---------------------------------------------------------------
+  // Save Semantics: Race Condition Prevention
+  // "onFocusChange" prevents AI hallucination conflicts caused by
+  // the user typing while the AI reads or writes files.
+  // ---------------------------------------------------------------
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // ---------------------------------------------------------------
+  // Code Intelligence & Type Diagnostics
+  // ---------------------------------------------------------------
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.disableAutomaticTypeAcquisition": false,
+
+  "python.analysis.indexing": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.typeCheckingMode": "basic",
+
+  // ---------------------------------------------------------------
+  // Watcher Exclusions: CPU & Memory Protection
+  // Excludes heavy build and cache directories from filesystem watchers.
+  // ---------------------------------------------------------------
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+
+    "**/node_modules/**": true,
+    "**/.pnpm-store/**": true,
+    "**/.yarn/cache/**": true,
+    "**/.npm/**": true,
+
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/.turbo/**": true,
+    "**/.cache/**": true,
+
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.ruff_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+
+    "**/target/**": true,
+    "**/bin/**": true,
+    "**/obj/**": true,
+    "**/.idea/**": true,
+    "**/.vscode-test/**": true
+  },
+
+  // ---------------------------------------------------------------
+  // Search Exclusions: Clean Code Discovery
+  // NOTE: Package lockfiles intentionally remain searchable as evidence.
+  // ---------------------------------------------------------------
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.pnpm-store": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.next": true,
+    "**/.nuxt": true,
+    "**/.turbo": true,
+    "**/*.min.js": true,
+    "**/*.min.css": true,
+    "**/*.map": true
+  },
+
+  // ---------------------------------------------------------------
+  // UI Responsiveness & Visual Comfort
+  // ---------------------------------------------------------------
+  "editor.minimap.enabled": false,
+  "editor.codeLens": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": true,
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "workbench.reduceMotion": "on"
+}
