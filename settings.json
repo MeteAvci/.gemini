@@ -1,112 +1,172 @@
 {
-    // =========================================================
-    // 👑 ÇETEGPT "ULTIMATE HYBRID" CONFIG v2026 (FINAL)
-    // (Verified for Antigravity & Gemini Code Assist - Agent Mode)
-    // =========================================================
+  // =========================================================================
+  // 👑 ÇETEGPT "SOVEREIGN META-AGENT" CONFIG v2.0 (2026)
+  // Designed for Google Antigravity 2.0 / CLI & Gemini 3.8 Flash (High)
+  // Federated with GDP (Git Diff Patcher) Control Plane & ProofLoop
+  // =========================================================================
 
-    // ---[1. INTELLIGENCE & AGENT AUTONOMY: FULL POTENTIAL] ---
-    // Settings to prevent the agent from acting like a permission-seeking intern, 
-    // force the 1M Context window to its absolute limits, and eradicate MEMORY LOSS.
-    
-    // [CRITICAL] Official Agent and YOLO (Full Autonomy) Settings
-    "geminicodeassist.agentYoloMode": true, // [ON] The agent modifies files and runs terminal commands without asking (YOLO Mode).
-    "geminicodeassist.enableCodebaseIndexing": true, // [ON] Instantly indexes the entire project into RAM.
-    "geminicodeassist.contextWindow": "1m", // Forces the 1 Million token context window.
-    
-    //[FIXED - AMNESIA & MEMORY DRIFT PROTECTION] 
-    // "slidingWindow" was deleting the constitution as context grew. Replaced with "compress" 
-    // to intelligently summarize and retain older context without purging it.
-    "geminicodeassist.contextWindow.strategy": "compress", 
-    "geminicodeassist.memory.pinSystemPrompt": true, // [ON] Nails the constitution to the AI's frontal lobe. It will never forget.
-    
-    // Antigravity (Custom Build) Autonomy Settings:
-    "antigravity.agent.defaultConversationMode": "planning", // [PLANNING] Always plans first, never dives in blindly.
-    "antigravity.agent.terminalExecutionPolicy": "alwaysProceed", // [ON] Executes Bash scripts without asking for confirmation.
-    "antigravity.agent.reviewPolicy": "alwaysProceed", // [ON] Bypasses "Accept/Reject" UI buttons, applies changes directly.
-    "antigravity.contextTracking.level": "high", // [HIGH] Performs deep, aggressive context analysis.
+  // ---[1. INTELLIGENCE & MODEL ARCHITECTURE] ---
+  "model": {
+    "name": "Gemini 3.8 Flash (High)",
+    "thinkingLevel": "high",
+    "compressionThreshold": 0.7,
+    "maxSessionTurns": 128,
+    "disableLoopDetection": false
+  },
 
-    // ---[2. CONSTITUTION (GEMINI.md) INTEGRATION] ---
-    // Forces the agent to read the manifesto so it doesn't act like a loose cannon.
-    "geminicodeassist.rules": "CRITICAL: Pin this to working memory. Read and strictly follow the GEMINI.md file in the root directory for all instructions, persona, and rules. Never let this context drift.",
-
-    // ---[3. TERMINAL VISION & IQ PROTECTION (CRITICAL!)] ---
-    // Prevents the agent from going "blind" when scraping terminal outputs.
-    "terminal.integrated.shellIntegration.enabled": false, // [OFF] Strips VS Code escape codes so the agent can read the terminal clearly.
-    
-    // "Clean" profile to disable custom prompts that confuse the agent on Windows:
-    "terminal.integrated.profiles.windows": {
-        "AG PowerShell (clean)": {
-            "path": "powershell.exe",
-            "args":["-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass"]
-        }
+  // ---[2. AUTONOMY & BOUNDED EXECUTION (REPLACING UNGOVERNED YOLO)] ---
+  "general": {
+    "defaultApprovalMode": "auto_edit",
+    "enableAutoUpdate": true,
+    "enableNotifications": true,
+    "plan": {
+      "enabled": true,
+      "modelRouting": true
     },
-    "terminal.integrated.defaultProfile.windows": "AG PowerShell (clean)",
-
-    // ---[4. TYPE SAFETY & FILE SYNCHRONIZATION] ---
-    // The "afterDelay" setting causes race conditions if you type while the agent reads.
-    "files.autoSave": "onFocusChange", // [FIXED] Only save on focus change. Ensures the agent always reads the finalized state.
-    "typescript.tsserver.experimental.enableProjectDiagnostics": true, // [ON] Allows the agent to see the entire project flawlessly via LSP.
-
-    // ---[5. VISUAL COMFORT: PRODUCTIVITY] ---
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": true,
-    "editor.guides.indentation": true,
-    "editor.smoothScrolling": true,
-    "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": "on",
-
-    // ---[6. PERFORMANCE INSURANCE: IGNORE LIST] ---
-    // Prevents the agent from polluting the 1 Million token context with Node or Build garbage.
-    "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules/**": true,
-        "**/dist/**": true,
-        "**/build/**": true,
-        "**/.next/**": true,
-        "**/.nuxt/**": true,
-        "**/.turbo/**": true,
-        "**/coverage/**": true,
-        "**/.cache/**": true,
-        "**/.npm/**": true,
-        "**/__pycache__/**": true,
-        "**/.venv/**": true,
-        "**/venv/**": true,
-        "**/*.pyc": true,
-        "**/ios/Pods/**": true,
-        "**/android/app/build/**": true,
-        "**/.dart_tool/**": true,
-        "**/flutter/bin/cache/**": true,
-        "**/.gradle/**": true,
-        "**/build/classes/**": true,
-        "**/target/**": true,
-        "**/bin/**": true,
-        "**/obj/**": true,
-        "**/.idea/**": true,
-        "**/.vscode-test/**": true
+    "retryFetchErrors": true,
+    "maxAttempts": 4,
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "14d"
     },
+    "topicUpdateNarration": true,
+    "logRagSnippets": false
+  },
 
-    // ---[7. SEARCH ENGINE TUNING] ---
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/dist": true,
-        "**/.next": true,
-        "**/yarn.lock": true,
-        "**/package-lock.json": true,
-        "**/pnpm-lock.yaml": true,
-        "**/*.min.js": true,
-        "**/*.map": true // Hides source maps so the agent doesn't get confused.
+  "security": {
+    "toolSandboxing": true,
+    "disableYoloMode": true,
+    "disableAlwaysAllow": true,
+    "enablePermanentToolApproval": false,
+    "folderTrust": {
+      "enabled": true
     },
+    "environmentVariableRedaction": {
+      "enabled": true,
+      "allowed": []
+    }
+  },
 
-    // ---[8. OTHER TWEAKS] ---
-    "editor.codeLens": false, // Prevents constant AST analysis from eating the CPU.
-    "workbench.reduceMotion": "on", // Disables UI animations for instant editor responsiveness.
-    "editor.minimap.enabled": false, // Wastes GPU, provides zero benefit to the agent.
-    "files.trimTrailingWhitespace": true, // Keeps Git diffs clean.
-    
-    // [EXTRA] Terminal Performance
-    "terminal.integrated.gpuAcceleration": "on",
-    "debug.terminal.clearBeforeReusing": true
+  // ---[3. CONTEXT DOCTRINE & HYGIENE (1M TOKENS ≠ 1M TO STUFF)] ---
+  "context": {
+    "discoveryMaxDirs": 200,
+    "loadMemoryFromIncludeDirectories": false,
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectGeminiIgnore": true,
+      "enableRecursiveFileSearch": true
+    }
+  },
+
+  // ---[4. GOVERNED TOOL SURFACE & MCP INTEGRATION] ---
+  "tools": {
+    "useRipgrep": true,
+    "truncateToolOutputThreshold": 32768,
+    "shell": {
+      "enableInteractiveShell": false,
+      "showColor": false
+    }
+  },
+
+  "mcpServers": {
+    "gdp": {
+      "command": "gdp",
+      "args": [
+        "mcp-stdio"
+      ],
+      "env": {
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "1"
+      }
+    },
+    "gdp-global": {
+      "command": "gdp",
+      "args": [
+        "mcp-stdio",
+        "--gateway"
+      ],
+      "env": {
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "1"
+      }
+    }
+  },
+
+  // ---[5. TERMINAL & POWERSHELL CLEAN ENVIRONMENT] ---
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.gpuAcceleration": "auto",
+  "terminal.integrated.profiles.windows": {
+    "GDP PowerShell (Clean)": {
+      "path": "pwsh.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "GDP PowerShell (Clean)",
+
+  // ---[6. FILE SYNCHRONIZATION & LSP DIAGNOSTICS] ---
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+
+  "python.analysis.indexing": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.typeCheckingMode": "basic",
+
+  // ---[7. WATCHER & SEARCH PERFORMANCE EXCLUDES] ---
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.git/lfs/**": true,
+    "**/node_modules/**": true,
+    "**/.pnpm-store/**": true,
+    "**/.yarn/cache/**": true,
+    "**/.npm/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true,
+    "**/.turbo/**": true,
+    "**/.cache/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/.astro/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.ruff_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/target/**": true,
+    "**/bin/**": true,
+    "**/obj/**": true,
+    "**/.idea/**": true,
+    "**/.vscode-test/**": true
+  },
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.pnpm-store": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.next": true,
+    "**/.nuxt": true,
+    "**/.turbo": true,
+    "**/*.map": true,
+    "**/*.min.js": true,
+    "**/*.min.css": true
+  },
+
+  // ---[8. UI & VISUAL PERFORMANCE] ---
+  "editor.minimap.enabled": false,
+  "editor.codeLens": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": true,
+  "workbench.reduceMotion": "on"
 }

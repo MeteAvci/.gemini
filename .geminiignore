@@ -1,0 +1,52 @@
+# =========================================================================
+# .geminiignore - Next GDP Context Hygiene Filter
+# Prevents token stuffing while preserving lockfiles and evidence
+# =========================================================================
+
+# Dependencies
+node_modules/
+.pnpm-store/
+.yarn/cache/
+
+# Build and distribution artifacts
+dist/
+build/
+coverage/
+.next/
+.nuxt/
+.astro/
+.svelte-kit/
+.vercel/
+
+# Tool and test caches
+.turbo/
+.cache/
+.parcel-cache/
+.vite/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+
+# Large minified artifacts
+*.map
+*.min.js
+*.min.css
+
+# Binary build artifacts
+target/
+bin/
+obj/
+
+# CRITICAL: Preserve lockfiles as cryptographic evidence
+!package-lock.json
+!pnpm-lock.yaml
+!yarn.lock
+!uv.lock
+!poetry.lock
