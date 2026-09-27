@@ -16,7 +16,15 @@
 
 Bu repo, kişisel AI aracımın yapılandırma dosyalarını barındırır. **Özellikle Google Antigravity ortamı ve Gemini CLI motoru için hazırlanmış olup, her AI platformuyla uyumlu olacak şekilde tasarlanmıştır.**
 
-### 🚀 Son Güncelleme (v1.4) - "Kanıt Öncelikli Derin Doğrulama"
+### 🚀 Son Güncelleme (v2.0) - "Sovereign Meta-Agent & Federated Intelligence (Egemen Federe Ajan Anayasası)"
+- **Model ve Dinamik Akıl Yürütme:** Varsayılan model `Gemini 3.8 Flash (High)` dinamik akıl yürütme motoruyla hizalandı. "Model ID Anayasa Değildir" ilkesiyle anayasa, model adından bağımsız bir yetenek rotalama yapısına (Capability Routing) kavuşturuldu.
+- **Provider-Neutrality ve Devir Teslim:** Tek bir CLI oturumuna veya LLM sağlayıcısına bağımlılık sona erdi. Token/kota limitlerinde (HTTP 429/EOF) sohbet geçmişi kopyalamak yerine 4 öğeli kompakt demet (`Objective`, `State DAG`, `Evidence SHA-256`, `Boundaries`) üzerinden ChatGPT / Gemini Spark / Local modellerine pürüzsüz devir teslim protokolü (`Provider Exhaustion Handshake`) kuruldu.
+- **Context Doktrini (1M ≠ 1M Doldurmak):** 1.000.000 tokenlik pencereyi ham geçmişle şişirip modeli amneziye uğratmak yerine, sistem anayasası ve repo mimarisi Google Context Caching (TTL) önekine alındı; her turda yalnızca canlı State DAG ve kanıt referansları taşınır hale getirildi.
+- **Tersine Ağ Geçidi (`Reverse-Gateway`):** Tarayıcı sekmelerinde çalışan modellerin ````gdp-exec```` komutları, Win32 Job Object (`CREATE_NO_WINDOW`) ve Linux `cgroups v2` ile pencere patlatmadan arka planda güvenle çalıştırılır.
+- **Bounded Execution (YOLO'nun Sonu):** Frensiz antik YOLO modu (`agentYoloMode`) yerine, `disableYoloMode: true` + Antigravity Sandbox (`proceed-in-sandbox`) ve GDP Host Execution Admission Controller üçlü savunma hattı devreye alındı.
+- **MCP ve Temiz PowerShell 7:** `gdp` ve `gdp-global` stdio MCP entegrasyonu, temiz Windows terminal profili (`pwsh -NoLogo -NoProfile`) ve `.geminiignore` akıllı bağlam filtresi eklendi.
+
+### 🚀 Önceki Güncelleme (v1.4) - "Kanıt Öncelikli Derin Doğrulama"
 - **Araştırma Tamamlama Kapısı:** AI artık araştırmayı birkaç link açmak olarak saymıyor. En güncel resmi dokümantasyonu bulması, varsa sürüm/tarih/release bağlamını çıkarması ve bunu canlı yerel implementasyonla karşılaştırması gerekiyor.
 - **Kaynak Öncelik Merdiveni:** Güven sırası netleştirildi: resmi dokümanlar, resmi release notes/changelog, resmi repo veya referans implementasyonlar, resmi issue/discussion kayıtları ve en son çare olarak topluluk kaynakları.
 - **Araç Esnekliği (`Tool Flexibility Protocol`):** Eski "Tools First" katılığı yumuşatıldı. Native araçlar hız, güvenlik veya doğruluk sağlıyorsa kullanılacak; aksi halde `bash` veya `pwsh` komutlarına doğrudan geçilecek.
@@ -218,7 +226,15 @@ Bu ayarlar, AI'ın terminali okuma yeteneğini ve veri çakışmalarını yönet
 
 This repository hosts the configuration files for my personal AI tool. It is **specially built for the Google Antigravity framework and its Gemini CLI engine**, and is designed to be compatible with any AI platform.
 
-### 🚀 Latest Update (v1.4) - "Evidence-First Deep Verification"
+### 🚀 Latest Update (v2.0) - "Sovereign Meta-Agent & Federated Intelligence"
+- **Model & Runtime Target:** Defaulted to `Gemini 3.8 Flash (High)` with dynamic reasoning. Governed by the "Model ID is Not Constitution" principle, the constitution abstracts away hardcoded model IDs into capability-based routing.
+- **Provider Neutrality & Handoff:** Eliminated single-point-of-failure LLM dependencies. Under token exhaustion or HTTP 429/EOF, the system avoids context dumps and executes atomic transactions using the 4-part handoff tuple: `⟨Objective, State DAG Revision, Evidence SHA-256 Refs, Boundaries⟩`.
+- **Context Doctrine (1M ≠ 1M to Stuff):** Replaced monolithic context stuffing with Google Context Caching (TTL-based) for stable prefixes (Constitution, AST maps), streaming only compact live state each turn to eliminate Lost-in-the-Middle amnesia.
+- **Reverse-Gateway Execution:** Browser surfaces emit typed ````gdp-exec```` blocks, executed via Win32 Job Objects (`CREATE_NO_WINDOW`) or Linux `cgroups v2` without stealing user focus.
+- **Bounded Execution (Beyond YOLO):** Retired unconstrained YOLO mode in favor of `disableYoloMode: true`, Antigravity Sandbox (`proceed-in-sandbox`), and host execution admission control.
+- **Native MCP & Clean PowerShell 7:** Integrated `gdp` and `gdp-global` stdio MCP servers, clean pwsh profiles (`-NoLogo -NoProfile`), and `.geminiignore` context filters.
+
+### 🚀 Previous Update (v1.4) - "Evidence-First Deep Verification"
 - **Research Completion Gate:** Research no longer means opening a couple of links. The AI must locate the latest official documentation, extract version/date/release context when available, and compare that evidence against the live local implementation.
 - **Source Priority Ladder:** The trust order is now explicit: official docs, official release notes/changelogs, official repositories or reference implementations, official issue/discussion threads for edge cases, and community sources only as a last resort.
 - **Tool Flexibility Protocol:** The old "Tools First" rigidity was softened. Native tools should be used when they improve speed, safety, or precision; if they become awkward or slower, the AI should switch to `bash` or `pwsh` without ceremony.
