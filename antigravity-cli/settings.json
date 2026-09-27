@@ -1,20 +1,13 @@
 {
-  // =========================================================================
-  // Google Antigravity CLI (agy) Configuration
-  // Location: ~/.gemini/antigravity-cli/settings.json
-  // Bounded Execution & Unified Sandbox Permissions
-  // =========================================================================
-
   "toolPermission": "proceed-in-sandbox",
   "artifactReviewPolicy": "agent-decides",
   "enableTerminalSandbox": true,
   "allowNonWorkspaceAccess": false,
-
   "verbosity": "medium",
   "notifications": true,
   "showTips": false,
   "showFeedbackSurvey": false,
-
+  "trustedWorkspaces": [],
   "permissions": {
     "allow": [
       "command(git status)",
@@ -37,7 +30,6 @@
       "command(cargo test)",
       "command(cargo check)"
     ],
-
     "ask": [
       "command(npm install)",
       "command(npm add)",
@@ -50,7 +42,6 @@
       "read_url(*)",
       "execute_url(*)"
     ],
-
     "deny": [
       "command(git reset --hard)",
       "command(git clean -fdx)",
