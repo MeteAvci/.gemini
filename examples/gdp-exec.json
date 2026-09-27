@@ -1,0 +1,20 @@
+{
+  "schema": "gdp.exec.v1",
+  "request_id": "exec_0123456789abcdef0123456789abcdef",
+  "operation_id": "operation:test",
+  "lease": {
+    "lease_id": "lease_current",
+    "term": 48,
+    "fencing_token": 992
+  },
+  "effect_class": "verification",
+  "command": [
+    "python3",
+    "-m",
+    "pytest",
+    "tests/test_example.py"
+  ],
+  "cwd": ".",
+  "timeout_seconds": 120,
+  "idempotency_key": "test-example-at-current-head"
+}

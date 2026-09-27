@@ -1,22 +1,6 @@
 {
-  // =========================================================================
-  // 👑 ÇETEGPT "SOVEREIGN META-AGENT" CONFIG v2.0 (2026)
-  // Designed for Google Antigravity 2.0 / CLI & Gemini 3.8 Flash (High)
-  // Federated with GDP (Git Diff Patcher) Control Plane & ProofLoop
-  // =========================================================================
-
-  // ---[1. INTELLIGENCE & MODEL ARCHITECTURE] ---
-  "model": {
-    "name": "Gemini 3.8 Flash (High)",
-    "thinkingLevel": "high",
-    "compressionThreshold": 0.7,
-    "maxSessionTurns": 128,
-    "disableLoopDetection": false
-  },
-
-  // ---[2. AUTONOMY & BOUNDED EXECUTION (REPLACING UNGOVERNED YOLO)] ---
   "general": {
-    "defaultApprovalMode": "auto_edit",
+    "defaultApprovalMode": "default",
     "enableAutoUpdate": true,
     "enableNotifications": true,
     "plan": {
@@ -33,21 +17,12 @@
     "logRagSnippets": false
   },
 
-  "security": {
-    "toolSandboxing": true,
-    "disableYoloMode": true,
-    "disableAlwaysAllow": true,
-    "enablePermanentToolApproval": false,
-    "folderTrust": {
-      "enabled": true
-    },
-    "environmentVariableRedaction": {
-      "enabled": true,
-      "allowed": []
-    }
+  "model": {
+    "maxSessionTurns": 128,
+    "compressionThreshold": 0.7,
+    "disableLoopDetection": false
   },
 
-  // ---[3. CONTEXT DOCTRINE & HYGIENE (1M TOKENS ≠ 1M TO STUFF)] ---
   "context": {
     "discoveryMaxDirs": 200,
     "loadMemoryFromIncludeDirectories": false,
@@ -58,14 +33,35 @@
     }
   },
 
-  // ---[4. GOVERNED TOOL SURFACE & MCP INTEGRATION] ---
   "tools": {
+    "sandboxAllowedPaths": [],
+    "sandboxNetworkAccess": false,
     "useRipgrep": true,
-    "truncateToolOutputThreshold": 32768,
+    "truncateToolOutputThreshold": 30000,
     "shell": {
       "enableInteractiveShell": false,
       "showColor": false
     }
+  },
+
+  "security": {
+    "toolSandboxing": true,
+    "disableYoloMode": true,
+    "disableAlwaysAllow": true,
+    "enablePermanentToolApproval": false,
+    "autoAddToPolicyByDefault": false,
+    "folderTrust": {
+      "enabled": true
+    },
+    "environmentVariableRedaction": {
+      "enabled": true,
+      "allowed": []
+    }
+  },
+
+  "advanced": {
+    "autoConfigureMemory": true,
+    "ignoreLocalEnv": false
   },
 
   "mcpServers": {
@@ -79,6 +75,7 @@
         "PYTHONUTF8": "1"
       }
     },
+
     "gdp-global": {
       "command": "gdp",
       "args": [
@@ -90,83 +87,5 @@
         "PYTHONUTF8": "1"
       }
     }
-  },
-
-  // ---[5. TERMINAL & POWERSHELL CLEAN ENVIRONMENT] ---
-  "terminal.integrated.shellIntegration.enabled": true,
-  "terminal.integrated.gpuAcceleration": "auto",
-  "terminal.integrated.profiles.windows": {
-    "GDP PowerShell (Clean)": {
-      "path": "pwsh.exe",
-      "args": [
-        "-NoLogo",
-        "-NoProfile"
-      ]
-    }
-  },
-  "terminal.integrated.defaultProfile.windows": "GDP PowerShell (Clean)",
-
-  // ---[6. FILE SYNCHRONIZATION & LSP DIAGNOSTICS] ---
-  "files.autoSave": "onFocusChange",
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-  "typescript.tsserver.maxTsServerMemory": 4096,
-
-  "python.analysis.indexing": true,
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.diagnosticMode": "workspace",
-  "python.analysis.typeCheckingMode": "basic",
-
-  // ---[7. WATCHER & SEARCH PERFORMANCE EXCLUDES] ---
-  "files.watcherExclude": {
-    "**/.git/objects/**": true,
-    "**/.git/subtree-cache/**": true,
-    "**/.git/lfs/**": true,
-    "**/node_modules/**": true,
-    "**/.pnpm-store/**": true,
-    "**/.yarn/cache/**": true,
-    "**/.npm/**": true,
-    "**/dist/**": true,
-    "**/build/**": true,
-    "**/coverage/**": true,
-    "**/.turbo/**": true,
-    "**/.cache/**": true,
-    "**/.next/**": true,
-    "**/.nuxt/**": true,
-    "**/.astro/**": true,
-    "**/__pycache__/**": true,
-    "**/.pytest_cache/**": true,
-    "**/.mypy_cache/**": true,
-    "**/.ruff_cache/**": true,
-    "**/.venv/**": true,
-    "**/venv/**": true,
-    "**/target/**": true,
-    "**/bin/**": true,
-    "**/obj/**": true,
-    "**/.idea/**": true,
-    "**/.vscode-test/**": true
-  },
-
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/.pnpm-store": true,
-    "**/dist": true,
-    "**/build": true,
-    "**/coverage": true,
-    "**/.next": true,
-    "**/.nuxt": true,
-    "**/.turbo": true,
-    "**/*.map": true,
-    "**/*.min.js": true,
-    "**/*.min.css": true
-  },
-
-  // ---[8. UI & VISUAL PERFORMANCE] ---
-  "editor.minimap.enabled": false,
-  "editor.codeLens": false,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": true,
-  "editor.guides.indentation": true,
-  "workbench.reduceMotion": "on"
+  }
 }

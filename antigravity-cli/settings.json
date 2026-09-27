@@ -1,0 +1,55 @@
+{
+  "toolPermission": "proceed-in-sandbox",
+  "artifactReviewPolicy": "agent-decides",
+  "enableTerminalSandbox": true,
+  "allowNonWorkspaceAccess": false,
+
+  "verbosity": "medium",
+  "notifications": true,
+  "showTips": false,
+  "showFeedbackSurvey": false,
+
+  "permissions": {
+    "allow": [
+      "command(git status)",
+      "command(git diff)",
+      "command(git log)",
+      "command(git show)",
+      "command(git rev-parse)",
+      "command(rg)",
+      "command(pytest)",
+      "command(python -m pytest)",
+      "command(python3 -m pytest)",
+      "command(python -m unittest)",
+      "command(python3 -m unittest)",
+      "command(npm test)",
+      "command(npm run lint)",
+      "command(npm run typecheck)",
+      "mcp(gdp/*)"
+    ],
+
+    "ask": [
+      "command(npm install)",
+      "command(npm add)",
+      "command(pnpm install)",
+      "command(pip install)",
+      "command(pip3 install)",
+      "read_url(*)",
+      "execute_url(*)",
+      "mcp(gdp-global/*)"
+    ],
+
+    "deny": [
+      "command(git reset --hard)",
+      "command(git clean)",
+      "command(git push --force)",
+      "command(rm -rf)",
+      "command(sudo)",
+      "command(powershell -ExecutionPolicy Bypass)",
+      "command(pwsh -ExecutionPolicy Bypass)",
+      "write_file(~/.ssh/)",
+      "write_file(~/.aws/)",
+      "write_file(~/.gnupg/)"
+    ]
+  }
+}
